@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layoutlog.cshtml";
+}
+@if (User.Identity.IsAuthenticated)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+else
+{
+    Layout = "~/Views/Shared/_Layoutlog.cshtml";
+}
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <div class="slide2" style="padding-top: 45px;">
+
+
+
+        <ul>
+            <li>
+
+                <img src="https://urural.edu.gt/wp-content/uploads/2020/07/banner-portada-web-Ambiente.png" />
+            </li>
+            <li>
+
+                <img src="https://urural.edu.gt/wp-content/themes/urural/img/Banner1.jpg" />
+            </li>
+            <li>
+
+                <img src="https://urural.edu.gt/wp-content/uploads/2014/09/DSC_0134.jpg" />
+            </li>
+            <li>
+
+                <img src="https://scontent.fgua1-3.fna.fbcdn.net/v/t39.30808-6/310787407_3381022528884606_4308187047731097102_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_ohc=bG5wR1psLDwAX_eTaGg&tn=Z-1aBOQq5EyF7ZW0&_nc_ht=scontent.fgua1-3.fna&oh=00_AT8LBTAMpHobYm-dDyXP0vUipjipmepJ9GO2WBXeigY7IQ&oe=6346A0D8" />
+            </li>
+            <li>
+
+                <img src="https://scontent.fgua1-3.fna.fbcdn.net/v/t39.30808-6/305961018_3358295267823999_1773908395132447184_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=730e14&_nc_ohc=GNMKwQCkDB4AX8UQEmA&tn=Z-1aBOQq5EyF7ZW0&_nc_ht=scontent.fgua1-3.fna&oh=00_AT9UTsTpwbq5PYtwvOQazN7Tf_RFOaC9EDRd9m7n8vZSGw&oe=634701FB" />
+            </li>
+        </ul>
+
+
+
+    </div>
+</div>

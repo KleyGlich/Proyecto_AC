@@ -1,0 +1,101 @@
+﻿@model IEnumerable<Gestor_Notas.Models.DetalleCurso>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PrimerParcial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SegundoParcial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Actividades)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProyectoFinal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Extraordinario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaIngresoNota)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaFinalizacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroActa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Año)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCursoNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdUsuarioNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrimerParcial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SegundoParcial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Actividades)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProyectoFinal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Extraordinario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaIngresoNota)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaFinalizacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroActa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Año)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCursoNavigation.IdCurso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdUsuarioNavigation.IdUsuario)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

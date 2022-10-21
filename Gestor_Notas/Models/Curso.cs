@@ -10,7 +10,7 @@ namespace Gestor_Notas.Models
             DetalleCursos = new HashSet<DetalleCurso>();
         }
 
-        public string IdCurso { get; set; } = null!;
+        public string? IdCurso { get; set; } = null!;
         public string? Curso1 { get; set; }
         public string? IdCarrera { get; set; }
         public string? IdUsuario { get; set; }

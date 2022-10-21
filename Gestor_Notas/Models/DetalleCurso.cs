@@ -5,9 +5,9 @@ namespace Gestor_Notas.Models
 {
     public partial class DetalleCurso
     {
-        public string IdDetalleCurso { get; set; } = null!;
+        public string? IdDetalleCurso { get; set; } = null!;
         public string IdCurso { get; set; } = null!;
-        public string IdUsuario { get; set; } = null!;
+        public string Estudiante { get; set; } = null!;
         public int? PrimerParcial { get; set; }
         public int? SegundoParcial { get; set; }
         public int? Actividades { get; set; }
@@ -19,7 +19,7 @@ namespace Gestor_Notas.Models
         public int? NumeroActa { get; set; }
         public string? Año { get; set; }
 
+        public virtual Estudiante EstudianteNavigation { get; set; } = null!;
         public virtual Curso IdCursoNavigation { get; set; } = null!;
-        public virtual Usuario IdUsuarioNavigation { get; set; } = null!;
     }
 }

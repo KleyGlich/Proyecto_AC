@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\acordero\\Desktop\\copia de archivos del cliente\\s10\\AC\\Gestor_Notas\\Gestor_Notas.csproj": {}
+    "C:\\Users\\acordero\\Desktop\\copia de archivos del cliente\\s10\\AC\\Proyecto_AC\\Gestor_Notas\\Gestor_Notas.csproj": {}
   },
   "projects": {
-    "C:\\Users\\acordero\\Desktop\\copia de archivos del cliente\\s10\\AC\\Gestor_Notas\\Gestor_Notas.csproj": {
+    "C:\\Users\\acordero\\Desktop\\copia de archivos del cliente\\s10\\AC\\Proyecto_AC\\Gestor_Notas\\Gestor_Notas.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\acordero\\Desktop\\copia de archivos del cliente\\s10\\AC\\Gestor_Notas\\Gestor_Notas.csproj",
+        "projectUniqueName": "C:\\Users\\acordero\\Desktop\\copia de archivos del cliente\\s10\\AC\\Proyecto_AC\\Gestor_Notas\\Gestor_Notas.csproj",
         "projectName": "Gestor_Notas",
-        "projectPath": "C:\\Users\\acordero\\Desktop\\copia de archivos del cliente\\s10\\AC\\Gestor_Notas\\Gestor_Notas.csproj",
+        "projectPath": "C:\\Users\\acordero\\Desktop\\copia de archivos del cliente\\s10\\AC\\Proyecto_AC\\Gestor_Notas\\Gestor_Notas.csproj",
         "packagesPath": "C:\\Users\\acordero\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\acordero\\Desktop\\copia de archivos del cliente\\s10\\AC\\Gestor_Notas\\obj\\",
+        "outputPath": "C:\\Users\\acordero\\Desktop\\copia de archivos del cliente\\s10\\AC\\Proyecto_AC\\Gestor_Notas\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -48,17 +48,17 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[6.0.9, )"
+              "version": "[6.0.10, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.9, )"
+              "version": "[6.0.10, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[6.0.9, )"
+              "version": "[6.0.10, )"
             }
           },
           "imports": [

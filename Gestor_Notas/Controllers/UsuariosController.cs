@@ -8,12 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using Gestor_Notas.Models;
 using System.Text;
 using System.Security.Cryptography;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Gestor_Notas.Controllers
 {
-    [Authorize]
-
     public class UsuariosController : Controller
     {
         private readonly AC_ScoreContext _context;
@@ -52,7 +49,7 @@ namespace Gestor_Notas.Controllers
         // GET: Usuarios/Create
         public IActionResult Create()
         {
-            ViewData["IdRol"] = new SelectList(_context.Entidads, "IdRol", "Nombre");
+            ViewData["IdRol"] = new SelectList(_context.Entidads, "IdRol", "IdRol");
             return View();
         }
 
@@ -65,12 +62,13 @@ namespace Gestor_Notas.Controllers
         {
             if (ModelState.IsValid)
             {
-                usuario.Contraseña = GetSHA256(usuario.Contraseña).ToUpper();
+                string pass = GetSHA256(usuario.Contraseña).ToUpper();
+                usuario.Contraseña = pass;
                 _context.Add(usuario);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdRol"] = new SelectList(_context.Entidads, "IdRol", "Nombre", usuario.IdRol);
+            ViewData["IdRol"] = new SelectList(_context.Entidads, "IdRol", "IdRol", usuario.IdRol);
             return View(usuario);
         }
 
@@ -87,7 +85,7 @@ namespace Gestor_Notas.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdRol"] = new SelectList(_context.Entidads, "IdRol", "Nombre", usuario.IdRol);
+            ViewData["IdRol"] = new SelectList(_context.Entidads, "IdRol", "IdRol", usuario.IdRol);
             return View(usuario);
         }
 
@@ -107,6 +105,8 @@ namespace Gestor_Notas.Controllers
             {
                 try
                 {
+                    string pass = GetSHA256(usuario.Contraseña).ToUpper();
+                    usuario.Contraseña = pass;
                     _context.Update(usuario);
                     await _context.SaveChangesAsync();
                 }
@@ -123,7 +123,7 @@ namespace Gestor_Notas.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdRol"] = new SelectList(_context.Entidads, "IdRol", "Nombre", usuario.IdRol);
+            ViewData["IdRol"] = new SelectList(_context.Entidads, "IdRol", "IdRol", usuario.IdRol);
             return View(usuario);
         }
 
@@ -164,6 +164,7 @@ namespace Gestor_Notas.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
         private string GetSHA256(string str)
         {
             SHA256 sha256 = SHA256Managed.Create();

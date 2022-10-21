@@ -6,12 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Gestor_Notas.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Gestor_Notas.Controllers
 {
-    [Authorize]
-
     public class PeriodicidadsController : Controller
     {
         private readonly AC_ScoreContext _context;

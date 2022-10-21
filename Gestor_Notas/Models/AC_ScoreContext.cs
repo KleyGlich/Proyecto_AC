@@ -20,6 +20,8 @@ namespace Gestor_Notas.Models
         public virtual DbSet<Curso> Cursos { get; set; } = null!;
         public virtual DbSet<DetalleCurso> DetalleCursos { get; set; } = null!;
         public virtual DbSet<Entidad> Entidads { get; set; } = null!;
+        public virtual DbSet<Estudiante> Estudiantes { get; set; } = null!;
+        public virtual DbSet<EstudianteCarrera> EstudianteCarreras { get; set; } = null!;
         public virtual DbSet<Periodicidad> Periodicidads { get; set; } = null!;
         public virtual DbSet<Sede> Sedes { get; set; } = null!;
         public virtual DbSet<Usuario> Usuarios { get; set; } = null!;
@@ -38,7 +40,7 @@ namespace Gestor_Notas.Models
             modelBuilder.Entity<Carrera>(entity =>
             {
                 entity.HasKey(e => e.IdCarrera)
-                    .HasName("PK__Carrera__884A8F1FD3A8CFA0");
+                    .HasName("PK__Carrera__884A8F1FE8A3C591");
 
                 entity.ToTable("Carrera");
 
@@ -65,7 +67,7 @@ namespace Gestor_Notas.Models
             modelBuilder.Entity<Curso>(entity =>
             {
                 entity.HasKey(e => e.IdCurso)
-                    .HasName("PK__Curso__085F27D608D6B72F");
+                    .HasName("PK__Curso__085F27D6694A05B9");
 
                 entity.ToTable("Curso");
 
@@ -110,8 +112,8 @@ namespace Gestor_Notas.Models
 
             modelBuilder.Entity<DetalleCurso>(entity =>
             {
-                entity.HasKey(e => new { e.IdDetalleCurso, e.IdCurso, e.IdUsuario })
-                    .HasName("PK__DetalleC__9BDF1FE5FCBD1988");
+                entity.HasKey(e => new { e.IdDetalleCurso, e.IdCurso, e.Estudiante })
+                    .HasName("PK__DetalleC__34DAF0D0F4E6F6D7");
 
                 entity.ToTable("DetalleCurso");
 
@@ -124,7 +126,7 @@ namespace Gestor_Notas.Models
                     .HasMaxLength(36)
                     .IsUnicode(false);
 
-                entity.Property(e => e.IdUsuario)
+                entity.Property(e => e.Estudiante)
                     .HasMaxLength(36)
                     .IsUnicode(false);
 
@@ -136,23 +138,23 @@ namespace Gestor_Notas.Models
 
                 entity.Property(e => e.FechaIngresoNota).HasColumnType("date");
 
+                entity.HasOne(d => d.EstudianteNavigation)
+                    .WithMany(p => p.DetalleCursos)
+                    .HasForeignKey(d => d.Estudiante)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_DetalleCurso.Estudiante");
+
                 entity.HasOne(d => d.IdCursoNavigation)
                     .WithMany(p => p.DetalleCursos)
                     .HasForeignKey(d => d.IdCurso)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_DetalleCurso.IdCurso");
-
-                entity.HasOne(d => d.IdUsuarioNavigation)
-                    .WithMany(p => p.DetalleCursos)
-                    .HasForeignKey(d => d.IdUsuario)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_DetalleCurso.IdUsuario");
             });
 
             modelBuilder.Entity<Entidad>(entity =>
             {
                 entity.HasKey(e => e.IdRol)
-                    .HasName("PK__Entidad__2A49584CA49855E0");
+                    .HasName("PK__Entidad__2A49584CFEF3D574");
 
                 entity.ToTable("Entidad");
 
@@ -170,10 +172,90 @@ namespace Gestor_Notas.Models
                     .IsUnicode(false);
             });
 
+            modelBuilder.Entity<Estudiante>(entity =>
+            {
+                entity.HasKey(e => e.IdUsuario)
+                    .HasName("PK__Estudian__5B65BF97BC8B0E9D");
+
+                entity.ToTable("Estudiante");
+
+                entity.Property(e => e.IdUsuario)
+                    .HasMaxLength(36)
+                    .IsUnicode(false)
+                    .HasDefaultValueSql("(newid())");
+
+                entity.Property(e => e.Contraseña)
+                    .HasMaxLength(64)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.IdRol)
+                    .HasMaxLength(36)
+                    .IsUnicode(false)
+                    .HasDefaultValueSql("('Student')");
+
+                entity.Property(e => e.Inscripcion).HasColumnType("date");
+
+                entity.Property(e => e.PrimerApellido)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.PrimerNombre)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.SegundoApellido)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.SegundoNombre)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.TercerNombre)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Usuario)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<EstudianteCarrera>(entity =>
+            {
+                entity.HasKey(e => e.IdEstu)
+                    .HasName("PK__Estudian__6053EECE9B1BF6D2");
+
+                entity.ToTable("Estudiante_Carrera");
+
+                entity.Property(e => e.IdEstu)
+                    .HasMaxLength(36)
+                    .IsUnicode(false)
+                    .HasColumnName("ID_Estu")
+                    .HasDefaultValueSql("(newid())");
+
+                entity.Property(e => e.Estudiante)
+                    .HasMaxLength(36)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.IdCarrera)
+                    .HasMaxLength(36)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.EstudianteNavigation)
+                    .WithMany(p => p.EstudianteCarreras)
+                    .HasForeignKey(d => d.Estudiante)
+                    .HasConstraintName("FK_Estudiante_Carrera.Estudiante");
+
+                entity.HasOne(d => d.IdCarreraNavigation)
+                    .WithMany(p => p.EstudianteCarreras)
+                    .HasForeignKey(d => d.IdCarrera)
+                    .HasConstraintName("FK_Estudiante_Carrera.IdCarrera");
+            });
+
             modelBuilder.Entity<Periodicidad>(entity =>
             {
                 entity.HasKey(e => e.IdPeriodicidad)
-                    .HasName("PK__Periodic__DA476CCD696F0B87");
+                    .HasName("PK__Periodic__DA476CCDF3FC67ED");
 
                 entity.ToTable("Periodicidad");
 
@@ -194,7 +276,7 @@ namespace Gestor_Notas.Models
             modelBuilder.Entity<Sede>(entity =>
             {
                 entity.HasKey(e => e.IdSede)
-                    .HasName("PK__Sede__A7780DFFB173C963");
+                    .HasName("PK__Sede__A7780DFF727482AA");
 
                 entity.ToTable("Sede");
 
@@ -212,7 +294,7 @@ namespace Gestor_Notas.Models
             modelBuilder.Entity<Usuario>(entity =>
             {
                 entity.HasKey(e => e.IdUsuario)
-                    .HasName("PK__Usuario__5B65BF97ABB04B59");
+                    .HasName("PK__Usuario__5B65BF97B756D6BF");
 
                 entity.ToTable("Usuario");
 
@@ -254,7 +336,7 @@ namespace Gestor_Notas.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.Tipo)
-                    .HasMaxLength(1)
+                    .HasMaxLength(30)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Usuario1)

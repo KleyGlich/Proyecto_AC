@@ -6,12 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Gestor_Notas.Models;
-using Microsoft.AspNetCore.Authorization;
+using System.Xml.Linq;
+using System.Text.Json.Serialization;
 
 namespace Gestor_Notas.Controllers
 {
-    [Authorize]
-
     public class CursoesController : Controller
     {
         private readonly AC_ScoreContext _context;
@@ -24,7 +23,25 @@ namespace Gestor_Notas.Controllers
         // GET: Cursoes
         public async Task<IActionResult> Index()
         {
+          string  uuid = User.Claims.ElementAt(2).ToString().Split(":")[1].ToString().Replace(" ", "");
             var aC_ScoreContext = _context.Cursos.Include(c => c.IdCarreraNavigation).Include(c => c.IdPeriodicidadNavigation).Include(c => c.IdUsuarioNavigation);
+
+
+            if ((User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Student")){
+                var xs = _context.Estudiantes.Where(x => x.IdUsuario == uuid).Include(x => x.EstudianteCarreras).First();
+               
+                aC_ScoreContext = _context.Cursos.Where(x => x.IdCarrera == xs.EstudianteCarreras.First().IdCarrera).Include(c => c.IdCarreraNavigation).Include(c => c.IdPeriodicidadNavigation).Include(c => c.IdUsuarioNavigation);
+                return View(await aC_ScoreContext.ToListAsync());
+            }
+            else if(!(User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador"))
+            {
+                var porf = _context.Usuarios.Where(x => x.IdUsuario == uuid).First();
+
+                aC_ScoreContext = _context.Cursos.Where(x => x.IdUsuario == porf.IdUsuario).Include(c => c.IdCarreraNavigation).Include(c => c.IdPeriodicidadNavigation).Include(c => c.IdUsuarioNavigation);
+
+                return View(await aC_ScoreContext.ToListAsync());
+            }
+
             return View(await aC_ScoreContext.ToListAsync());
         }
 
@@ -52,9 +69,9 @@ namespace Gestor_Notas.Controllers
         // GET: Cursoes/Create
         public IActionResult Create()
         {
-            ViewData["IdCarrera"] = new SelectList(_context.Carreras, "IdCarrera", "IdCarrera");
-            ViewData["IdPeriodicidad"] = new SelectList(_context.Periodicidads, "IdPeriodicidad", "IdPeriodicidad");
-            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario");
+            ViewData["IdCarrera"] = new SelectList(_context.Carreras, "IdCarrera", "Carrera1");
+            ViewData["IdPeriodicidad"] = new SelectList(_context.Periodicidads, "IdPeriodicidad", "Nombre");
+            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "PrimerNombre");
             return View();
         }
 

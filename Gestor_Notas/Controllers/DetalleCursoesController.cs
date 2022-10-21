@@ -6,12 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Gestor_Notas.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Gestor_Notas.Controllers
 {
-    [Authorize]
-
     public class DetalleCursoesController : Controller
     {
         private readonly AC_ScoreContext _context;
@@ -24,7 +21,7 @@ namespace Gestor_Notas.Controllers
         // GET: DetalleCursoes
         public async Task<IActionResult> Index()
         {
-            var aC_ScoreContext = _context.DetalleCursos.Include(d => d.IdCursoNavigation).Include(d => d.IdUsuarioNavigation);
+            var aC_ScoreContext = _context.DetalleCursos.Include(d => d.EstudianteNavigation).Include(d => d.IdCursoNavigation);
             return View(await aC_ScoreContext.ToListAsync());
         }
 
@@ -37,8 +34,8 @@ namespace Gestor_Notas.Controllers
             }
 
             var detalleCurso = await _context.DetalleCursos
+                .Include(d => d.EstudianteNavigation)
                 .Include(d => d.IdCursoNavigation)
-                .Include(d => d.IdUsuarioNavigation)
                 .FirstOrDefaultAsync(m => m.IdDetalleCurso == id);
             if (detalleCurso == null)
             {
@@ -51,8 +48,8 @@ namespace Gestor_Notas.Controllers
         // GET: DetalleCursoes/Create
         public IActionResult Create()
         {
+            ViewData["Estudiante"] = new SelectList(_context.Estudiantes, "IdUsuario", "IdUsuario");
             ViewData["IdCurso"] = new SelectList(_context.Cursos, "IdCurso", "IdCurso");
-            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario");
             return View();
         }
 
@@ -61,7 +58,7 @@ namespace Gestor_Notas.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdDetalleCurso,IdCurso,IdUsuario,PrimerParcial,SegundoParcial,Actividades,ProyectoFinal,Extraordinario,Estado,FechaIngresoNota,FechaFinalizacion,NumeroActa,Año")] DetalleCurso detalleCurso)
+        public async Task<IActionResult> Create([Bind("IdDetalleCurso,IdCurso,Estudiante,PrimerParcial,SegundoParcial,Actividades,ProyectoFinal,Extraordinario,Estado,FechaIngresoNota,FechaFinalizacion,NumeroActa,Año")] DetalleCurso detalleCurso)
         {
             if (ModelState.IsValid)
             {
@@ -69,8 +66,8 @@ namespace Gestor_Notas.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["Estudiante"] = new SelectList(_context.Estudiantes, "IdUsuario", "IdUsuario", detalleCurso.Estudiante);
             ViewData["IdCurso"] = new SelectList(_context.Cursos, "IdCurso", "IdCurso", detalleCurso.IdCurso);
-            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario", detalleCurso.IdUsuario);
             return View(detalleCurso);
         }
 
@@ -87,8 +84,8 @@ namespace Gestor_Notas.Controllers
             {
                 return NotFound();
             }
+            ViewData["Estudiante"] = new SelectList(_context.Estudiantes, "IdUsuario", "IdUsuario", detalleCurso.Estudiante);
             ViewData["IdCurso"] = new SelectList(_context.Cursos, "IdCurso", "IdCurso", detalleCurso.IdCurso);
-            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario", detalleCurso.IdUsuario);
             return View(detalleCurso);
         }
 
@@ -97,7 +94,7 @@ namespace Gestor_Notas.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("IdDetalleCurso,IdCurso,IdUsuario,PrimerParcial,SegundoParcial,Actividades,ProyectoFinal,Extraordinario,Estado,FechaIngresoNota,FechaFinalizacion,NumeroActa,Año")] DetalleCurso detalleCurso)
+        public async Task<IActionResult> Edit(string id, [Bind("IdDetalleCurso,IdCurso,Estudiante,PrimerParcial,SegundoParcial,Actividades,ProyectoFinal,Extraordinario,Estado,FechaIngresoNota,FechaFinalizacion,NumeroActa,Año")] DetalleCurso detalleCurso)
         {
             if (id != detalleCurso.IdDetalleCurso)
             {
@@ -124,8 +121,8 @@ namespace Gestor_Notas.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["Estudiante"] = new SelectList(_context.Estudiantes, "IdUsuario", "IdUsuario", detalleCurso.Estudiante);
             ViewData["IdCurso"] = new SelectList(_context.Cursos, "IdCurso", "IdCurso", detalleCurso.IdCurso);
-            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario", detalleCurso.IdUsuario);
             return View(detalleCurso);
         }
 
@@ -138,8 +135,8 @@ namespace Gestor_Notas.Controllers
             }
 
             var detalleCurso = await _context.DetalleCursos
+                .Include(d => d.EstudianteNavigation)
                 .Include(d => d.IdCursoNavigation)
-                .Include(d => d.IdUsuarioNavigation)
                 .FirstOrDefaultAsync(m => m.IdDetalleCurso == id);
             if (detalleCurso == null)
             {

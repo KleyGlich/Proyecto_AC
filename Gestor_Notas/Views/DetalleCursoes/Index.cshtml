@@ -43,10 +43,10 @@
                 @Html.DisplayNameFor(model => model.Año)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdCursoNavigation)
+                @Html.DisplayNameFor(model => model.EstudianteNavigation)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdUsuarioNavigation)
+                @Html.DisplayNameFor(model => model.IdCursoNavigation)
             </th>
             <th></th>
         </tr>
@@ -85,10 +85,10 @@
                 @Html.DisplayFor(modelItem => item.Año)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdCursoNavigation.IdCurso)
+                @Html.DisplayFor(modelItem => item.EstudianteNavigation.IdUsuario)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdUsuarioNavigation.IdUsuario)
+                @Html.DisplayFor(modelItem => item.IdCursoNavigation.IdCurso)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

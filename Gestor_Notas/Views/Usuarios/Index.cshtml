@@ -42,7 +42,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Contraseña)
             </th>
-           
+            <th>
+                @Html.DisplayNameFor(model => model.IdRolNavigation)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -74,12 +76,14 @@
                 @Html.DisplayFor(modelItem => item.Tipo)
             </td>
             <td>
-                    @Html.DisplayFor(modelItem => item.Usuario1)
+                @Html.DisplayFor(modelItem => item.Usuario1)
             </td>
             <td>
-                    <input type="password" value=@item.Contraseña readonly>
+                @Html.DisplayFor(modelItem => item.Contraseña)
             </td>
-            
+            <td>
+                @Html.DisplayFor(modelItem => item.IdRolNavigation.IdRol)
+            </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdUsuario">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.IdUsuario">Details</a> |

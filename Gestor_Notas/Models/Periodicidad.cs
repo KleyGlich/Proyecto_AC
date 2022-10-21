@@ -10,7 +10,7 @@ namespace Gestor_Notas.Models
             Cursos = new HashSet<Curso>();
         }
 
-        public string IdPeriodicidad { get; set; } = null!;
+        public string? IdPeriodicidad { get; set; } = null!;
         public string? Nombre { get; set; }
         public string? Descripcion { get; set; }
 

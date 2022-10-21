@@ -10,7 +10,7 @@ namespace Gestor_Notas.Models
             Carreras = new HashSet<Carrera>();
         }
 
-        public string IdSede { get; set; } = null!;
+        public string? IdSede { get; set; } = null!;
         public string? Sede1 { get; set; }
 
         public virtual ICollection<Carrera> Carreras { get; set; }

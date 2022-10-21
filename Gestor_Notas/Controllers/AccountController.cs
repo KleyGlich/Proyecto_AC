@@ -1,7 +1,9 @@
 ﻿using Gestor_Notas.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +16,14 @@ namespace Gestor_Notas.Controllers
 {
     public class AccountController : Controller
     {
-        public List<Claim> claims = new List<Claim>();
-        private readonly AC_ScoreContext _context = new AC_ScoreContext();
 
-       
+        private readonly AC_ScoreContext _context;
+
+        public AccountController(AC_ScoreContext context)
+        {
+            _context = context;
+        }
+
 
         [HttpGet("Login")]
         public IActionResult Login()
@@ -28,29 +34,79 @@ namespace Gestor_Notas.Controllers
         [HttpPost("Login")]
         public async Task<IActionResult> validate(string usuario, string password)
         {
+            List<Claim> claims = new List<Claim>();
             string pass = GetSHA256(password).ToUpper();
-            var val = from a in _context.Usuarios where usuario == a.Usuario1 && pass == a.Contraseña  select a;
-            if (val.Any())
+           
+            var val = _context.Usuarios.Where(x => x.Usuario1 == usuario && pass == x.Contraseña).Join(_context.Entidads, x => x.IdRol , us => us.IdRol ,
+                 (x, us) => new
+                 {
+                     PrimerNombre = x.PrimerNombre,
+                     SegundoNombre = x.SegundoNombre,
+                     Rol = us.Nombre,
+                     ID = x.IdUsuario
+                 }
+                ).ToList();
+            var val2 = new  List<Estudiante>();
+            if (!val.Any())
             {
-                // creamos un listado de peticion
-                claims.Add(new Claim("username", val.First().PrimerNombre+" "+ val.First().SegundoNombre)); // guardamos el nombre de quien se logea
-                claims.Add(new Claim(ClaimTypes.NameIdentifier, val.First().PrimerNombre + " " + val.First().SegundoNombre)); //guardamos el tipo de peticion 
-                var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme); // asignamos esa peticicon a un esquema de cookies
-                var claimprincipal = new ClaimsPrincipal(claimIdentity); // la volvemos peticion principal
+               
+                val2 = (from a in _context.Estudiantes where usuario == a.Usuario && pass == a.Contraseña select a).ToList();
+                if (val2.Any())
+                {
+                    // creamos un listado de peticion
+                    claims.Add(new Claim("username", val2.First().PrimerNombre + " " + val2.First().SegundoNombre)); // guardamos el nombre de quien se logea
+                    claims.Add(new Claim("Rol", val2.First().IdRol)); // guardamos el nombre de quien se logea
+                    claims.Add(new Claim("ID", val2.First().IdUsuario)); // guardamos el nombre de quien se logea
+
+                    claims.Add(new Claim(ClaimTypes.NameIdentifier, val2.First().PrimerNombre + " " + val2.First().SegundoNombre)); //guardamos el tipo de peticion 
+                    var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme); // asignamos esa peticicon a un esquema de cookies
+                    var claimprincipal = new ClaimsPrincipal(claimIdentity); // la volvemos peticion principal
 
 
-                await HttpContext.SignInAsync(claimprincipal); // cremos la cookie de autentificacion
+                    await HttpContext.SignInAsync(claimprincipal); // cremos la cookie de autentificacion
 
-                return RedirectToAction("Index", "Home"); // redireccion a un pagina 
+                    return RedirectToAction("Index", "Home"); // redireccion a un pagina 
+                }
+                else
+                {
+
+                    return RedirectToAction("Index", "Error", new { data = "Error de Log in", data2 = "Credenciales Incorectas" });
+                    // si el usuario no es valido envia un badrequest como respuesta
+
+
+                }
+
             }
             else
             {
-                
-                    return RedirectToAction("Index", "Error", new { data = "Error de Log in", data2 = "Usuario Inactivo porfavor contacte a la institucion" });
+                if (val.Any())
+                {
+                    // creamos un listado de peticion
+                    claims.Add(new Claim("username", val.First().PrimerNombre + " " + val.First().SegundoNombre)); // guardamos el nombre de quien se logea
+                    claims.Add(new Claim("Rol", val.First().Rol)); // guardamos el nombre de quien se logea
+                    claims.Add(new Claim("ID", val.First().ID)); // guardamos el nombre de quien se logea
+
+                    claims.Add(new Claim(ClaimTypes.NameIdentifier, val.First().PrimerNombre + " " + val.First().SegundoNombre)); //guardamos el tipo de peticion 
+                    var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme); // asignamos esa peticicon a un esquema de cookies
+                    var claimprincipal = new ClaimsPrincipal(claimIdentity); // la volvemos peticion principal
+
+
+                    await HttpContext.SignInAsync(claimprincipal); // cremos la cookie de autentificacion
+
+                    return RedirectToAction("Index", "Home"); // redireccion a un pagina 
+                }
+                else
+                {
+
+                    return RedirectToAction("Index", "Error", new { data = "Error de Log in", data2 = "Credenciales incorrectas" });
                     // si el usuario no es valido envia un badrequest como respuesta
 
-                
+
+                }
+
             }
+
+
 
 
         }

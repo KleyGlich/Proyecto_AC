@@ -154,18 +154,26 @@ namespace Gestor_Notas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            if (_context.DetalleCursos == null)
+            try
             {
-                return Problem("Entity set 'AC_ScoreContext.DetalleCursos'  is null.");
+                if (_context.DetalleCursos == null)
+                {
+                    return Problem("Entity set 'AC_ScoreContext.DetalleCursos'  is null.");
+                }
+                var detalleCurso = await _context.DetalleCursos.FindAsync(id);
+                if (detalleCurso != null)
+                {
+                    _context.DetalleCursos.Remove(detalleCurso);
+                }
+
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
-            var detalleCurso = await _context.DetalleCursos.FindAsync(id);
-            if (detalleCurso != null)
+            catch
             {
-                _context.DetalleCursos.Remove(detalleCurso);
+                return RedirectToAction("Index", "Error", new { data = "Error al eliminar Nota!!", data2 = "Este campo esta siendo utilizado" });
+
             }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
         }
 
         private bool DetalleCursoExists(string id)

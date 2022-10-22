@@ -1,14 +1,15 @@
 ﻿@model Gestor_Notas.Models.DetalleCurso
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalle de Notas";
 }
-
-<h1>Details</h1>
-
+<div class="orden">
+    <a asp-action="Index"><img src="~/img/flecha-izquierda.png" width="50" height="50" /></a>
+</div>
+<h1><center>Detalles de Nota</center></h1>
+<hr />
 <div>
-    <h4>DetalleCurso</h4>
-    <hr />
+    
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.PrimerParcial)
@@ -74,17 +75,21 @@
             @Html.DisplayNameFor(model => model.EstudianteNavigation)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EstudianteNavigation.IdUsuario)
+            @Html.DisplayFor(model => model.EstudianteNavigation.PrimerNombre)
+            @Html.DisplayFor(model => model.EstudianteNavigation.SegundoNombre)
+            @Html.DisplayFor(model => model.EstudianteNavigation.TercerNombre)
+            @Html.DisplayFor(model => model.EstudianteNavigation.PrimerApellido)
+            @Html.DisplayFor(model => model.EstudianteNavigation.SegundoApellido)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.IdCursoNavigation)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdCursoNavigation.IdCurso)
+            @Html.DisplayFor(model => model.IdCursoNavigation.Curso1)
         </dd>
     </dl>
 </div>
 <div>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+
 </div>

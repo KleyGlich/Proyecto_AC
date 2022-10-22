@@ -48,8 +48,10 @@ namespace Gestor_Notas.Controllers
         // GET: DetalleCursoes/Create
         public IActionResult Create()
         {
-            ViewData["Estudiante"] = new SelectList(_context.Estudiantes, "IdUsuario", "IdUsuario");
-            ViewData["IdCurso"] = new SelectList(_context.Cursos, "IdCurso", "IdCurso");
+            var usuario = _context.Usuarios.Select(a => new { IdUsuario = a.IdUsuario, Nombre = a.PrimerNombre + " " + a.SegundoNombre + " " + a.TercerNombre + " " + a.PrimerApellido + " " + a.SegundoApellido });
+
+            ViewData["Estudiante"] = new SelectList(usuario, "IdUsuario", "Nombre");
+            ViewData["IdCurso"] = new SelectList(_context.Cursos, "IdCurso", "Curso1");
             return View();
         }
 
@@ -66,6 +68,7 @@ namespace Gestor_Notas.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["Estudiante"] = new SelectList(_context.Estudiantes, "IdUsuario", "IdUsuario", detalleCurso.Estudiante);
             ViewData["IdCurso"] = new SelectList(_context.Cursos, "IdCurso", "IdCurso", detalleCurso.IdCurso);
             return View(detalleCurso);

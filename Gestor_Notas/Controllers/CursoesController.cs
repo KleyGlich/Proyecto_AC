@@ -69,9 +69,11 @@ namespace Gestor_Notas.Controllers
         // GET: Cursoes/Create
         public IActionResult Create()
         {
+            var usuario = _context.Usuarios.Select(a => new { IdUsuario = a.IdUsuario, Nombre = a.PrimerNombre + " " + a.SegundoNombre + " " + a.TercerNombre + " " + a.PrimerApellido + " " + a.SegundoApellido });
+
             ViewData["IdCarrera"] = new SelectList(_context.Carreras, "IdCarrera", "Carrera1");
             ViewData["IdPeriodicidad"] = new SelectList(_context.Periodicidads, "IdPeriodicidad", "Nombre");
-            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "PrimerNombre");
+            ViewData["IdUsuario"] = new SelectList(usuario, "IdUsuario", "Nombre");
             return View();
         }
 
@@ -107,9 +109,11 @@ namespace Gestor_Notas.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdCarrera"] = new SelectList(_context.Carreras, "IdCarrera", "IdCarrera", curso.IdCarrera);
-            ViewData["IdPeriodicidad"] = new SelectList(_context.Periodicidads, "IdPeriodicidad", "IdPeriodicidad", curso.IdPeriodicidad);
-            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario", curso.IdUsuario);
+            var usuario = _context.Usuarios.Select(a => new { IdUsuario = a.IdUsuario, Nombre = a.PrimerNombre + " " + a.SegundoNombre + " " + a.TercerNombre + " " + a.PrimerApellido + " " + a.SegundoApellido });
+
+            ViewData["IdCarrera"] = new SelectList(_context.Carreras, "IdCarrera", "Carrera1", curso.IdCarrera);
+            ViewData["IdPeriodicidad"] = new SelectList(_context.Periodicidads, "IdPeriodicidad", "Nombre", curso.IdPeriodicidad);
+            ViewData["IdUsuario"] = new SelectList(usuario, "IdUsuario", "Nombre", curso.IdUsuario);
             return View(curso);
         }
 
@@ -177,18 +181,26 @@ namespace Gestor_Notas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            if (_context.Cursos == null)
+            try
             {
-                return Problem("Entity set 'AC_ScoreContext.Cursos'  is null.");
+                if (_context.Cursos == null)
+                {
+                    return Problem("Entity set 'AC_ScoreContext.Cursos'  is null.");
+                }
+                var curso = await _context.Cursos.FindAsync(id);
+                if (curso != null)
+                {
+                    _context.Cursos.Remove(curso);
+                }
+
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
-            var curso = await _context.Cursos.FindAsync(id);
-            if (curso != null)
+            catch
             {
-                _context.Cursos.Remove(curso);
+                return RedirectToAction("Index", "Error", new { data = "Error al eliminar Curso!!", data2 = "Este campo esta siendo utilizado" });
+
             }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
         }
 
         private bool CursoExists(string id)

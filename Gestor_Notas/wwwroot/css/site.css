@@ -136,7 +136,7 @@ body {
     margin-bottom: 60px;
     background: Url("https://img.freepik.com/foto-gratis/fondo-azul-degradado-lujo-abstracto-azul-oscuro-liso-banner-estudio-vineta-negra_1258-52379.jpg");
     background-size: cover;
-    color: white;
+    color: white !important;
 }
 
 .table {
@@ -247,4 +247,48 @@ body {
     100% {
         margin-left: -500%;
     }
+}
+
+/*Agregado por kley*/
+
+#text {
+    width: 100px;
+}
+
+.formulario {
+    background: white;
+    color: black;
+}
+
+.style {
+}
+
+
+
+.ddic {
+    width: 100%;
+    /* Control de la altura con base en el texto del div*/
+    height: auto;
+    word-wrap: break-word;
+}
+
+.overflow-visible {
+    white-space: initial;
+}
+
+.logout {
+    display: flex;
+    flex-flow: column-reverse;
+    justify-items: flex-end;
+    align-items: flex-end;
+}
+
+.orden {
+    display: flex;
+}
+
+.letra {
+    font-size: 85%;
+    font-weight: bold;
+    display: flex;
 }

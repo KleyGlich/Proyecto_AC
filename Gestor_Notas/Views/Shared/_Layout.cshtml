@@ -12,7 +12,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand text-White" asp-area="" asp-controller="Home" asp-action="Index">Bomberos</a>
+                <a class="navbar-brand text-White" asp-area="" asp-controller="Home" asp-action="Index">URG</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -20,12 +20,7 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                        
-                        <li class="nav-item">
-                            <a class="nav-link text-White" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-White" asp-area="" asp-controller="Home" asp-action="Contactenos">Contacto</a>
-                        </li>
+                        
                      
                         <li>
                             <div class="dropdown1">
@@ -70,7 +65,9 @@
 
                     </ul>
                     @* agregamos una vista parcial donde se valida que el suaurio este autentificado  *@
+                    <div class="logout">
                     <partial name="_LoginPartial" />
+                    </div>
                 </div>
             </div>
         </nav>

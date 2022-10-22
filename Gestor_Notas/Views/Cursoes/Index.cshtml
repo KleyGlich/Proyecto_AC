@@ -1,14 +1,18 @@
 ﻿@model IEnumerable<Gestor_Notas.Models.Curso>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Cursos";
 }
 
-<h1>Index</h1>
+<h1><center>Listado de Cursos</center></h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
+<div class="orden">
+    <p>
+        <a asp-action="Create"><img src="~/img/agregar-documento.png" width="50" height="50" /></a>
+        <h3>Crear un Nuevo Curso</h3>
+    </p>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -24,7 +28,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.IdUsuarioNavigation)
             </th>
-            <th></th>
+            <th><center></center></th>
+            <th><center></center></th>
+            <th><center></center></th>
         </tr>
     </thead>
     <tbody>
@@ -34,19 +40,32 @@
                 @Html.DisplayFor(modelItem => item.Curso1)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdCarreraNavigation.IdCarrera)
+                @Html.DisplayFor(modelItem => item.IdCarreraNavigation.Carrera1)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdPeriodicidadNavigation.IdPeriodicidad)
+                @Html.DisplayFor(modelItem => item.IdPeriodicidadNavigation.Nombre)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdUsuarioNavigation.IdUsuario)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdCurso">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdCurso">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdCurso">Delete</a>
-            </td>
+                @Html.DisplayFor(modelItem => item.IdUsuarioNavigation.PrimerNombre)
+                @Html.DisplayFor(modelItem => item.IdUsuarioNavigation.SegundoNombre)
+                @Html.DisplayFor(modelItem => item.IdUsuarioNavigation.TercerNombre)
+                @Html.DisplayFor(modelItem => item.IdUsuarioNavigation.PrimerApellido)
+                @Html.DisplayFor(modelItem => item.IdUsuarioNavigation.SegundoApellido)
+            </td>           
+                <td>
+                    <center>
+                        <a asp-action="Edit" asp-route-id="@item.IdCurso"><img src="~/img/editar.png" width="40" height="40" /> </a>
+                    </center>
+                <td>
+                    <center>
+                        <a asp-action="Details" asp-route-id="@item.IdCurso"><img src="~/img/votacion.png" width="40" height="40" /> </a>
+                    </center>
+                </td>
+                <td>
+                    <center>
+                        <a asp-action="Delete" asp-route-id="@item.IdCurso"><img src="~/img/basura.png" width="40" height="40" /> </a>
+                    </center>
+                </td>
         </tr>
 }
     </tbody>

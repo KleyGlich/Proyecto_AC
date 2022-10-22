@@ -146,26 +146,18 @@ namespace Gestor_Notas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            try
+            if (_context.Estudiantes == null)
             {
-                if (_context.Estudiantes == null)
-                {
-                    return Problem("Entity set 'AC_ScoreContext.Estudiantes'  is null.");
-                }
-                var estudiante = await _context.Estudiantes.FindAsync(id);
-                if (estudiante != null)
-                {
-                    _context.Estudiantes.Remove(estudiante);
-                }
-
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return Problem("Entity set 'AC_ScoreContext.Estudiantes'  is null.");
             }
-            catch
+            var estudiante = await _context.Estudiantes.FindAsync(id);
+            if (estudiante != null)
             {
-                return RedirectToAction("Index", "Error", new { data = "Error al eliminar Estudiante!!", data2 = "Este campo esta siendo utilizado" });
-
+                _context.Estudiantes.Remove(estudiante);
             }
+            
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
         private string GetSHA256(string str)
         {

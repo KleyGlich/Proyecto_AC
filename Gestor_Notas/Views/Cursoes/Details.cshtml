@@ -1,0 +1,46 @@
+﻿@model Gestor_Notas.Models.Curso
+
+@{
+    ViewData["Title"] = "Detalle de Curso";
+}
+<div class="orden">
+    <a asp-action="Index"><img src="~/img/flecha-izquierda.png" width="50" height="50" /></a>
+</div>
+<h1><center>Detalles de Curso</center></h1>
+<hr />
+
+<div>
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Curso1)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Curso1)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdCarreraNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdCarreraNavigation.Carrera1)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdPeriodicidadNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdPeriodicidadNavigation.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdUsuarioNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdUsuarioNavigation.PrimerNombre)
+            @Html.DisplayFor(model => model.IdUsuarioNavigation.SegundoNombre)
+            @Html.DisplayFor(model => model.IdUsuarioNavigation.TercerNombre)
+            @Html.DisplayFor(model => model.IdUsuarioNavigation.PrimerApellido)
+            @Html.DisplayFor(model => model.IdUsuarioNavigation.SegundoApellido)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdCurso">Editar</a>
+</div>

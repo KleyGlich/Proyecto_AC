@@ -1,0 +1,151 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layoutlog.cshtml";
+}
+
+<link href="/css/Menu.css" rel="stylesheet" />
+
+@if (User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "")=="Student")
+{
+        <div class="container" style="margin-top: 40px;">
+            <div class="d-flex justify-content-center row row-cols-1 row-cols-md-3 g-4">
+
+                <div class="col">
+                    <a class="d-flex justify-content-center card card-fondo" href="/Cursoes">
+                        <img class="img-margin" src="/img/curso.png" alt="Algoritmos" style="width: 80%; height: 250px;">
+                        <div class="card_container">
+                            <h4>Cursos</h4>
+                        </div>
+                    </a>
+                </div>
+                <div class="col">
+                    <a class="d-flex justify-content-center card card-fondo"
+               href="/DetalleCursoes">
+                        <img class="img-margin" src="/img/notas.png" alt="Algoritmos" style="width: 80%; height: 250px; height: 250px;">
+                        <div class="card_container">
+                            <h4>Notas</h4>
+                        </div>
+                    </a>
+                </div>
+        </div>
+           </div>
+}else
+{
+    if (User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador")
+    {
+        <div class="container" style="margin-top: 40px;">
+            <div class="d-flex justify-content-center row row-cols-1 row-cols-md-3 g-4">
+
+                <div class="col">
+                    <a class="d-flex justify-content-center card card-fondo" href="/cursoes">
+                        <img class="img-margin" src="/img/curso.png" alt="Algoritmos" style="width: 80%; height: 250px;">
+                        <div class="card_container">
+                            <h4>Cursos</h4>
+                        </div>
+                    </a>
+                </div>
+                <div class="col">
+                    <a class="d-flex justify-content-center card card-fondo"
+               href="/DetalleCursoes">
+                        <img class="img-margin" src="/img/notas.png" alt="Algoritmos" style="width: 80%; height: 250px; height: 250px;">
+                        <div class="card_container">
+                            <h4>Notas</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col">
+                    <a class="d-flex justify-content-center card card-fondo"
+               href="/Usuarios">
+                        <img class="img-margin" src="/img/usuario.png" alt="Algoritmos" style="width: 80%; height: 250px; height: 250px;">
+                        <div class="card_container">
+                            <h4>Usuarios</h4>
+                        </div>
+                    </a>
+                </div>
+                <div class="col">
+                    <a class="d-flex justify-content-center card card-fondo"
+               href="/Estudiantes">
+                        <img class="img-margin" src="/img/estud.png" alt="Algoritmos" style="width: 80%; height: 250px; height: 250px;">
+                        <div class="card_container">
+                            <h4>Estudiantes</h4>
+                        </div>
+                    </a>
+                </div>
+                <div class="col">
+                    <a class="d-flex justify-content-center card card-fondo"
+               href="/Sedes">
+                        <img class="img-margin" src="/img/sede.png" alt="Algoritmos" style="width: 80%; height: 250px; height: 250px;">
+                        <div class="card_container">
+                            <h4>Sedes</h4>
+                        </div>
+                    </a>
+                </div>
+                <div class="col">
+                    <a class="d-flex justify-content-center card card-fondo"
+               href="/Proveedores">
+                        <img class="img-margin" src="/img/perido.png" alt="Algoritmos" style="width: 80%; height: 250px; height: 250px;">
+                        <div class="card_container">
+                            <h4>Periodo De Estudio</h4>
+                        </div>
+                    </a>
+                </div>
+                <div class="col">
+                    <a class="d-flex justify-content-center card card-fondo"
+               href="/Carreras">
+                        <img class="img-margin" src="/img/carrera.png" alt="Algoritmos" style="width: 80%; height: 250px; height: 250px;">
+                        <div class="card_container">
+                            <h4>Carreras</h4>
+                        </div>
+                    </a>
+                </div>
+
+        </div>
+           </div>
+
+    }else{
+       
+        <div class="container" style="margin-top: 40px;">
+            <div class="d-flex justify-content-center row row-cols-1 row-cols-md-3 g-4">
+
+                <div class="col">
+                    <a class="d-flex justify-content-center card card-fondo" href="/cursoes">
+                        <img class="img-margin" src="/img/curso.png" alt="Algoritmos" style="width: 80%; height: 250px;">
+                        <div class="card_container">
+                            <h4>Cursos</h4>
+                        </div>
+                    </a>
+                </div>
+                <div class="col">
+                    <a class="d-flex justify-content-center card card-fondo"  href="/DetalleCursoes">
+                        <img class="img-margin" src="/img/notas.png" alt="Algoritmos" style="width: 80%; height: 250px; height: 250px;">
+                        <div class="card_container">
+                            <h4>Notas</h4>
+                        </div>
+                    </a>
+                </div>
+                <div class="col">
+                    <a class="d-flex justify-content-center card card-fondo" href="/Estudiantes">
+                        <img class="img-margin" src="/img/estud.png" alt="Algoritmos" style="width: 80%; height: 250px;">
+                        <div class="card_container">
+                            <h4>Alumnos</h4>
+                        </div>
+                    </a>
+                </div>
+                <div class="col">
+                    <a class="d-flex justify-content-center card card-fondo" href="/">
+                        <img class="img-margin" src="/img/reporte.png" alt="Algoritmos" style="width: 80%; height: 250px;">
+                        <div class="card_container">
+                            <h4>Reportes</h4>
+                        </div>
+                    </a>
+                </div>
+               
+
+            </div>
+        </div>
+
+    }
+
+   
+}

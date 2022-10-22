@@ -1,0 +1,118 @@
+﻿@model IEnumerable<Gestor_Notas.Models.DetalleCurso>
+
+@{
+    ViewData["Title"] = "Notas";
+}
+
+<h1><center>Notas</center></h1>
+
+
+<div class="orden">
+    <p>
+        <a asp-action="Create"><img src="~/img/agregar-documento.png" width="50" height="50" /></a>
+        <h3>Crear un Nuevo Campo de Notas</h3>
+    </p>
+</div>
+<div style="overflow-x:auto;">
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PrimerParcial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SegundoParcial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Actividades)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProyectoFinal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Extraordinario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaIngresoNota)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaFinalizacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroActa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Año)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EstudianteNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCursoNavigation)
+            </th>
+                <th><center></center></th>
+                <th><center></center></th>
+                <th><center></center></th>
+        </tr>      
+    </thead>
+    </div>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrimerParcial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SegundoParcial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Actividades)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProyectoFinal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Extraordinario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaIngresoNota)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaFinalizacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroActa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Año)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstudianteNavigation.IdUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCursoNavigation.IdCurso)
+            </td>           
+            <td>
+                <center>
+                    <a asp-action="Edit" asp-route-id="@item."><img src="~/img/editar.png" width="40" height="40" /> </a>
+                </center>
+            <td>
+                <center>
+                    <a asp-action="Details" asp-route-id="@item."><img src="~/img/votacion.png" width="40" height="40" /> </a>
+                </center>
+            </td>
+            <td>
+                <center>
+                    <a asp-action="Delete" asp-route-id="@item."><img src="~/img/basura.png" width="40" height="40" /> </a>
+                </center>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

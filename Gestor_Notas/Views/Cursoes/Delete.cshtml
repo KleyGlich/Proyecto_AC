@@ -1,45 +1,55 @@
 ﻿@model Gestor_Notas.Models.Curso
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Eliminar Curso";
 }
 
-<h1>Delete</h1>
+<div class="orden">
+    <a asp-action="Index"><img src="~/img/flecha-izquierda.png" width="50" height="50" /></a>
+</div>
 
-<h3>Are you sure you want to delete this?</h3>
+<h1><center>Eliminar Curso</center></h1>
+
+<h3>Esta seguro de realizar esta acción?</h3>
+<h5>Tenga en cuenta que si se ha generado algun formulario con este dato</h5>
+<h5>no podra ser eliminado el campo.</h5>
+
+<hr>
 <div>
-    <h4>Curso</h4>
-    <hr />
+
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Curso1)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Curso1)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.IdCarreraNavigation)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdCarreraNavigation.IdCarrera)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdCarreraNavigation.Carrera1)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.IdPeriodicidadNavigation)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdPeriodicidadNavigation.IdPeriodicidad)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdPeriodicidadNavigation.Nombre)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.IdUsuarioNavigation)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdUsuarioNavigation.IdUsuario)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdUsuarioNavigation.PrimerNombre)
+            @Html.DisplayFor(model => model.IdUsuarioNavigation.SegundoNombre)
+            @Html.DisplayFor(model => model.IdUsuarioNavigation.TercerNombre)
+            @Html.DisplayFor(model => model.IdUsuarioNavigation.PrimerApellido)
+            @Html.DisplayFor(model => model.IdUsuarioNavigation.SegundoApellido)
         </dd>
-    </dl>
+    </dl><br>
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="IdCurso" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="Eliminar" class="btn btn-danger" />
     </form>
 </div>

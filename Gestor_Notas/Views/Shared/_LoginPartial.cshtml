@@ -4,10 +4,10 @@
     @if (User.Identity.IsAuthenticated)
     {
         <li class="nav-item">
-            <a class="nav-link text-White" asp-area="" asp-page="" title="Usuario">Hello @User.Claims.First().Value!</a>
+            <a class="nav-link text-White" asp-area="" asp-page="" title="Usuario">Bienvenido @User.Claims.First().Value !!</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-White" asp-controller="Account" asp-action="Logout" title="Logoff">Logoff</a>
+            <a class="nav-link text-White" asp-controller="Account" asp-action="Logout" title="Logoff">Salir</a>
 
         </li>
     }
@@ -15,7 +15,7 @@
     {
  
         <li class="nav-item">
-            <a class="nav-link text-White" asp-controller="Account" asp-action="Login">Login</a>
+            <a class="nav-link text-White" asp-controller="Account" asp-action="Login">Ingreso</a>
         </li>
     }
 </ul>

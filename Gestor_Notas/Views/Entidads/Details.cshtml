@@ -1,14 +1,17 @@
 ﻿@model Gestor_Notas.Models.Entidad
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalle de Rol";
 }
 
-<h1>Details</h1>
+<div class="orden">
+    <a asp-action="Index"><img src="~/img/flecha-izquierda.png" width="50" height="50" /></a>
+</div>
+<h1><center>Detalles de Rol</center></h1>
+<hr />
 
 <div>
-    <h4>Entidad</h4>
-    <hr />
+   
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Nombre)
@@ -25,6 +28,5 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.IdRol">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.IdRol">Editar</a> 
 </div>

@@ -96,20 +96,20 @@
                 @Html.DisplayFor(modelItem => item.EstudianteNavigation.IdUsuario)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdCursoNavigation.IdCurso)
+                @Html.DisplayFor(modelItem => item.IdCursoNavigation.Curso1)
             </td>           
             <td>
                 <center>
-                    <a asp-action="Edit" asp-route-id="@item."><img src="~/img/editar.png" width="40" height="40" /> </a>
+                    <a asp-action="Edit" asp-route-id="@item.IdDetalleCurso"><img src="~/img/editar.png" width="40" height="40" /> </a>
                 </center>
             <td>
                 <center>
-                    <a asp-action="Details" asp-route-id="@item."><img src="~/img/votacion.png" width="40" height="40" /> </a>
+                    <a asp-action="Details" asp-route-id="@item.IdDetalleCurso"><img src="~/img/votacion.png" width="40" height="40" /> </a>
                 </center>
             </td>
             <td>
                 <center>
-                    <a asp-action="Delete" asp-route-id="@item."><img src="~/img/basura.png" width="40" height="40" /> </a>
+                    <a asp-action="Delete" asp-route-id="@item.IdDetalleCurso"><img src="~/img/basura.png" width="40" height="40" /> </a>
                 </center>
             </td>
         </tr>

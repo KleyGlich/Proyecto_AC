@@ -1,14 +1,17 @@
 ﻿@model Gestor_Notas.Models.Carrera
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalles de Carrera";
 }
 
-<h1>Details</h1>
+<div class="orden">
+    <a asp-action="Index"><img src="~/img/flecha-izquierda.png" width="50" height="50" /></a>
+</div>
+<h1><center>Detalles de Carrera</center></h1>
+<hr />
 
 <div>
-    <h4>Carrera</h4>
-    <hr />
+    
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Carrera1)
@@ -20,11 +23,10 @@
             @Html.DisplayNameFor(model => model.IdSedeNavigation)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdSedeNavigation.IdSede)
+            @Html.DisplayFor(model => model.IdSedeNavigation.Sede1)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.IdCarrera">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.IdCarrera">Editar</a>
 </div>

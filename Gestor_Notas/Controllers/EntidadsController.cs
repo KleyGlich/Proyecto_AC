@@ -138,18 +138,26 @@ namespace Gestor_Notas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            if (_context.Entidads == null)
+            try
             {
-                return Problem("Entity set 'AC_ScoreContext.Entidads'  is null.");
+                if (_context.Entidads == null)
+                {
+                    return Problem("Entity set 'AC_ScoreContext.Entidads'  is null.");
+                }
+                var entidad = await _context.Entidads.FindAsync(id);
+                if (entidad != null)
+                {
+                    _context.Entidads.Remove(entidad);
+                }
+
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
-            var entidad = await _context.Entidads.FindAsync(id);
-            if (entidad != null)
+            catch
             {
-                _context.Entidads.Remove(entidad);
+                return RedirectToAction("Index", "Error", new { data = "Error al eliminar Entidad!!", data2 = "Este campo esta siendo utilizado" });
+
             }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
         }
 
         private bool EntidadExists(string id)

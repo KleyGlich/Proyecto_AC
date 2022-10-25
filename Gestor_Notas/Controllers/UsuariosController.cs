@@ -49,7 +49,7 @@ namespace Gestor_Notas.Controllers
         // GET: Usuarios/Create
         public IActionResult Create()
         {
-            ViewData["IdRol"] = new SelectList(_context.Entidads, "IdRol", "IdRol");
+            ViewData["IdRol"] = new SelectList(_context.Entidads, "IdRol", "Nombre");
             return View();
         }
 
@@ -85,7 +85,7 @@ namespace Gestor_Notas.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdRol"] = new SelectList(_context.Entidads, "IdRol", "IdRol", usuario.IdRol);
+            ViewData["IdRol"] = new SelectList(_context.Entidads, "IdRol", "Nombre", usuario.IdRol);
             return View(usuario);
         }
 
@@ -151,18 +151,26 @@ namespace Gestor_Notas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            if (_context.Usuarios == null)
+            try
             {
-                return Problem("Entity set 'AC_ScoreContext.Usuarios'  is null.");
+                if (_context.Usuarios == null)
+                {
+                    return Problem("Entity set 'AC_ScoreContext.Usuarios'  is null.");
+                }
+                var usuario = await _context.Usuarios.FindAsync(id);
+                if (usuario != null)
+                {
+                    _context.Usuarios.Remove(usuario);
+                }
+
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
-            var usuario = await _context.Usuarios.FindAsync(id);
-            if (usuario != null)
+            catch
             {
-                _context.Usuarios.Remove(usuario);
+                return RedirectToAction("Index", "Error", new { data = "Error al eliminar Usuario!!", data2 = "Este campo esta siendo utilizado" });
+
             }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
         }
 
         private string GetSHA256(string str)

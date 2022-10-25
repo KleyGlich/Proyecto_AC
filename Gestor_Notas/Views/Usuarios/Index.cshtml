@@ -1,14 +1,19 @@
 ﻿@model IEnumerable<Gestor_Notas.Models.Usuario>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Usuarios";
 }
+<h1><center>Usuarios</center></h1>
 
-<h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<div class="orden">
+    <p>
+        <a asp-action="Create"><img src="~/img/agregar-documento.png" width="50" height="50" /></a>
+        <h3>Crear un Nuevo Usuario</h3>
+    </p>
+</div>
+
+<div style="overflow-x:auto;">
 <table class="table">
     <thead>
         <tr>
@@ -39,15 +44,16 @@
             <th>
                 @Html.DisplayNameFor(model => model.Usuario1)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Contraseña)
-            </th>
+          
             <th>
                 @Html.DisplayNameFor(model => model.IdRolNavigation)
             </th>
-            <th></th>
+            <th><center></center></th>
+            <th><center></center></th>
+            <th><center></center></th>
         </tr>
     </thead>
+</div>
     <tbody>
 @foreach (var item in Model) {
         <tr>
@@ -78,17 +84,24 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Usuario1)
             </td>
+            
             <td>
-                @Html.DisplayFor(modelItem => item.Contraseña)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdRolNavigation.IdRol)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdUsuario">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdUsuario">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdUsuario">Delete</a>
-            </td>
+                @Html.DisplayFor(modelItem => item.IdRolNavigation.Nombre)
+            </td>        
+                <td>
+                    <center>
+                        <a asp-action="Edit" asp-route-id="@item.IdUsuario"><img src="~/img/editar.png" width="40" height="40" /> </a>
+                    </center>
+                <td>
+                    <center>
+                        <a asp-action="Details" asp-route-id="@item.IdUsuario"><img src="~/img/votacion.png" width="40" height="40" /> </a>
+                    </center>
+                </td>
+                <td>
+                    <center>
+                        <a asp-action="Delete" asp-route-id="@item.IdUsuario"><img src="~/img/basura.png" width="40" height="40" /> </a>
+                    </center>
+                </td>
         </tr>
 }
     </tbody>

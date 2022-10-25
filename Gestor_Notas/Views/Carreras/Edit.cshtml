@@ -1,13 +1,16 @@
 ﻿@model Gestor_Notas.Models.Carrera
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editar Carrera";
 }
 
-<h1>Edit</h1>
 
-<h4>Carrera</h4>
-<hr />
+<div class="orden">
+    <a asp-action="Index"><img src="~/img/flecha-izquierda.png" width="50" height="50" /></a>
+</div>
+
+<h1><center>Editar Carrera</center></h1>
+<hr>
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
@@ -24,15 +27,12 @@
                 <span asp-validation-for="IdSede" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Guardar" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -138,18 +138,26 @@ namespace Gestor_Notas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            if (_context.Periodicidads == null)
+            try
             {
-                return Problem("Entity set 'AC_ScoreContext.Periodicidads'  is null.");
+                if (_context.Periodicidads == null)
+                {
+                    return Problem("Entity set 'AC_ScoreContext.Periodicidads'  is null.");
+                }
+                var periodicidad = await _context.Periodicidads.FindAsync(id);
+                if (periodicidad != null)
+                {
+                    _context.Periodicidads.Remove(periodicidad);
+                }
+
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
-            var periodicidad = await _context.Periodicidads.FindAsync(id);
-            if (periodicidad != null)
+            catch
             {
-                _context.Periodicidads.Remove(periodicidad);
+                return RedirectToAction("Index", "Error", new { data = "Error al eliminar Periodicidad!!", data2 = "Este campo esta siendo utilizado" });
+
             }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
         }
 
         private bool PeriodicidadExists(string id)

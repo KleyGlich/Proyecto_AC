@@ -1,13 +1,16 @@
 ﻿@model Gestor_Notas.Models.Periodicidad
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editar Periodicidad";
 }
 
-<h1>Edit</h1>
+<div class="orden">
+    <a asp-action="Index"><img src="~/img/flecha-izquierda.png" width="50" height="50" /></a>
+</div>
 
-<h4>Periodicidad</h4>
-<hr />
+<h1><center>Editar Periodicidad</center></h1>
+<hr>
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
@@ -24,15 +27,13 @@
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Guardar" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

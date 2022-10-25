@@ -47,7 +47,7 @@ namespace Gestor_Notas.Controllers
         // GET: Carreras/Create
         public IActionResult Create()
         {
-            ViewData["IdSede"] = new SelectList(_context.Sedes, "IdSede", "IdSede");
+            ViewData["IdSede"] = new SelectList(_context.Sedes, "IdSede", "Sede1");
             return View();
         }
 
@@ -81,7 +81,7 @@ namespace Gestor_Notas.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdSede"] = new SelectList(_context.Sedes, "IdSede", "IdSede", carrera.IdSede);
+            ViewData["IdSede"] = new SelectList(_context.Sedes, "IdSede", "Sede1", carrera.IdSede);
             return View(carrera);
         }
 
@@ -145,18 +145,26 @@ namespace Gestor_Notas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            if (_context.Carreras == null)
+            try
             {
-                return Problem("Entity set 'AC_ScoreContext.Carreras'  is null.");
+                if (_context.Carreras == null)
+                {
+                    return Problem("Entity set 'AC_ScoreContext.Carreras'  is null.");
+                }
+                var carrera = await _context.Carreras.FindAsync(id);
+                if (carrera != null)
+                {
+                    _context.Carreras.Remove(carrera);
+                }
+
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
-            var carrera = await _context.Carreras.FindAsync(id);
-            if (carrera != null)
+            catch
             {
-                _context.Carreras.Remove(carrera);
+                return RedirectToAction("Index", "Error", new { data = "Error al eliminar Carrera!!", data2 = "Este campo esta siendo utilizado" });
+
             }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
         }
 
         private bool CarreraExists(string id)

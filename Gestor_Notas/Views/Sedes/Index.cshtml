@@ -1,23 +1,32 @@
 ﻿@model IEnumerable<Gestor_Notas.Models.Sede>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Sedes";
 }
 
-<h1>Index</h1>
+<h1><center>Sede</center></h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
+<div class="orden">
+    <p>
+        <a asp-action="Create"><img src="~/img/agregar-documento.png" width="50" height="50" /></a>
+        <h3>Crear una Nueva Sede</h3>
+    </p>
+</div>
+
+<div style="overflow-x:auto;">
 <table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Sede1)
             </th>
-            <th></th>
+                <th><center></center></th>
+                <th><center></center></th>
+                <th><center></center></th>
         </tr>
     </thead>
+        </div>
     <tbody>
 @foreach (var item in Model) {
         <tr>
@@ -25,9 +34,18 @@
                 @Html.DisplayFor(modelItem => item.Sede1)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdSede">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdSede">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdSede">Delete</a>
+                <center>
+                    <a asp-action="Edit" asp-route-id="@item.IdSede"><img src="~/img/editar.png" width="40" height="40" /> </a>
+                </center>
+            <td>
+                <center>
+                    <a asp-action="Details" asp-route-id="@item.IdSede"><img src="~/img/votacion.png" width="40" height="40" /> </a>
+                </center>
+            </td>
+            <td>
+                <center>
+                    <a asp-action="Delete" asp-route-id="@item.IdSede"><img src="~/img/basura.png" width="40" height="40" /> </a>
+                </center>
             </td>
         </tr>
 }

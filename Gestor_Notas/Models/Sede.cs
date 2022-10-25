@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Gestor_Notas.Models
 {
@@ -11,6 +12,8 @@ namespace Gestor_Notas.Models
         }
 
         public string? IdSede { get; set; } = null!;
+        [Display(Name = "Nombre de Sede :")]
+        [Required(ErrorMessage = "Este campo debe ser llenado:")]
         public string? Sede1 { get; set; }
 
         public virtual ICollection<Carrera> Carreras { get; set; }

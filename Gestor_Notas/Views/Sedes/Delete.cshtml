@@ -1,15 +1,21 @@
 ﻿@model Gestor_Notas.Models.Sede
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Eliminar Sede";
 }
+<div class="orden">
+    <a asp-action="Index"><img src="~/img/flecha-izquierda.png" width="50" height="50" /></a>
+</div>
 
-<h1>Delete</h1>
+<h1><center>Eliminar Sede</center></h1>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Esta seguro de realizar esta acción?</h3>
+<h5>Tenga en cuenta que si se ha generado algun formulario con este dato</h5>
+<h5>no podra ser eliminado el campo.</h5>
+
+<hr>
 <div>
-    <h4>Sede</h4>
-    <hr />
+   
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Sede1)
@@ -21,7 +27,6 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="IdSede" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="Delete" class="btn btn-danger" /> 
     </form>
 </div>

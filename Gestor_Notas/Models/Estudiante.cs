@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
@@ -47,4 +47,3 @@ namespace Gestor_Notas.Models
         public virtual ICollection<EstudianteCarrera> EstudianteCarreras { get; set; }
     }
 }
-

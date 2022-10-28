@@ -1,3 +1,4 @@
+C:\Users\pamel\Desktop\ProyectoAC\Proyecto_AC\Gestor_Notas\bin\Debug\net6.0\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\pamel\Desktop\ProyectoAC\Proyecto_AC\Gestor_Notas\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\pamel\Desktop\ProyectoAC\Proyecto_AC\Gestor_Notas\bin\Debug\net6.0\appsettings.json
 C:\Users\pamel\Desktop\ProyectoAC\Proyecto_AC\Gestor_Notas\bin\Debug\net6.0\Gestor_Notas.staticwebassets.runtime.json
@@ -15,7 +16,6 @@ C:\Users\pamel\Desktop\ProyectoAC\Proyecto_AC\Gestor_Notas\bin\Debug\net6.0\Micr
 C:\Users\pamel\Desktop\ProyectoAC\Proyecto_AC\Gestor_Notas\bin\Debug\net6.0\Microsoft.Build.Framework.dll
 C:\Users\pamel\Desktop\ProyectoAC\Proyecto_AC\Gestor_Notas\bin\Debug\net6.0\Microsoft.CodeAnalysis.AnalyzerUtilities.dll
 C:\Users\pamel\Desktop\ProyectoAC\Proyecto_AC\Gestor_Notas\bin\Debug\net6.0\Microsoft.CodeAnalysis.dll
-C:\Users\pamel\Desktop\ProyectoAC\Proyecto_AC\Gestor_Notas\bin\Debug\net6.0\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\pamel\Desktop\ProyectoAC\Proyecto_AC\Gestor_Notas\bin\Debug\net6.0\Microsoft.CodeAnalysis.CSharp.Features.dll
 C:\Users\pamel\Desktop\ProyectoAC\Proyecto_AC\Gestor_Notas\bin\Debug\net6.0\Microsoft.CodeAnalysis.CSharp.Scripting.dll
 C:\Users\pamel\Desktop\ProyectoAC\Proyecto_AC\Gestor_Notas\bin\Debug\net6.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll

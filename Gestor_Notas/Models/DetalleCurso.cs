@@ -9,9 +9,9 @@ namespace Gestor_Notas.Models
     {
         public string? IdDetalleCurso { get; set; } = null!;
         [Display(Name = "Curso:")]
-        public string IdCurso { get; set; } = null!;
+        public string? IdCurso { get; set; } = null!;
         [Display(Name = "Estudiante:")]
-        public string Estudiante { get; set; } = null!;
+        public string? Estudiante { get; set; } = null!;
         [Display(Name = "Primer Parcial:")]
         [Required(ErrorMessage = "Este campo debe ser llenado")]
         public int? PrimerParcial { get; set; }

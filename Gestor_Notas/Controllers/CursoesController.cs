@@ -23,17 +23,19 @@ namespace Gestor_Notas.Controllers
         // GET: Cursoes
         public async Task<IActionResult> Index()
         {
-          string  uuid = User.Claims.ElementAt(2).ToString().Split(":")[1].ToString().Replace(" ", "");
+
+            string uuid = User.Claims.ElementAt(2).ToString().Split(":")[1].ToString().Replace(" ", "");
             var aC_ScoreContext = _context.Cursos.Include(c => c.IdCarreraNavigation).Include(c => c.IdPeriodicidadNavigation).Include(c => c.IdUsuarioNavigation);
 
 
-            if ((User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Student")){
+            if ((User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Student"))
+            {
                 var xs = _context.Estudiantes.Where(x => x.IdUsuario == uuid).Include(x => x.EstudianteCarreras).First();
-               
+
                 aC_ScoreContext = _context.Cursos.Where(x => x.IdCarrera == xs.EstudianteCarreras.First().IdCarrera).Include(c => c.IdCarreraNavigation).Include(c => c.IdPeriodicidadNavigation).Include(c => c.IdUsuarioNavigation);
                 return View(await aC_ScoreContext.ToListAsync());
             }
-            else if(!(User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador"))
+            else if (!(User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador"))
             {
                 var porf = _context.Usuarios.Where(x => x.IdUsuario == uuid).First();
 
@@ -44,11 +46,13 @@ namespace Gestor_Notas.Controllers
 
             return View(await aC_ScoreContext.ToListAsync());
         }
-
+    
         // GET: Cursoes/Details/5
         public async Task<IActionResult> Details(string id)
         {
-            if (id == null || _context.Cursos == null)
+            if ((User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador"))
+            {
+                if (id == null || _context.Cursos == null)
             {
                 return NotFound();
             }
@@ -64,17 +68,31 @@ namespace Gestor_Notas.Controllers
             }
 
             return View(curso);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Error", new { data = "Error de acceso!!", data2 = "Usted no cuenta con los permisos necesario" });
+
+            }
         }
 
         // GET: Cursoes/Create
         public IActionResult Create()
         {
-            var usuario = _context.Usuarios.Select(a => new { IdUsuario = a.IdUsuario, Nombre = a.PrimerNombre + " " + a.SegundoNombre + " " + a.TercerNombre + " " + a.PrimerApellido + " " + a.SegundoApellido });
+            if (User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador")
+            {
+                var usuario = _context.Usuarios.Select(a => new { IdUsuario = a.IdUsuario, Nombre = a.PrimerNombre + " " + a.SegundoNombre + " " + a.TercerNombre + " " + a.PrimerApellido + " " + a.SegundoApellido });
 
             ViewData["IdCarrera"] = new SelectList(_context.Carreras, "IdCarrera", "Carrera1");
             ViewData["IdPeriodicidad"] = new SelectList(_context.Periodicidads, "IdPeriodicidad", "Nombre");
             ViewData["IdUsuario"] = new SelectList(usuario, "IdUsuario", "Nombre");
             return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Error", new { data = "Error de acceso!!", data2 = "Usted no cuenta con los permisos necesario" });
+
+            }
         }
 
         // POST: Cursoes/Create
@@ -84,7 +102,9 @@ namespace Gestor_Notas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdCurso,Curso1,IdCarrera,IdUsuario,IdPeriodicidad")] Curso curso)
         {
-            if (ModelState.IsValid)
+            if ((User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador"))
+            {
+                if (ModelState.IsValid)
             {
                 _context.Add(curso);
                 await _context.SaveChangesAsync();
@@ -94,12 +114,21 @@ namespace Gestor_Notas.Controllers
             ViewData["IdPeriodicidad"] = new SelectList(_context.Periodicidads, "IdPeriodicidad", "IdPeriodicidad", curso.IdPeriodicidad);
             ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario", curso.IdUsuario);
             return View(curso);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Error", new { data = "Error de acceso!!", data2 = "Usted no cuenta con los permisos necesario" });
+
+            }
         }
 
         // GET: Cursoes/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
-            if (id == null || _context.Cursos == null)
+            if ((User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador"))
+            {
+
+                if (id == null || _context.Cursos == null)
             {
                 return NotFound();
             }
@@ -115,6 +144,13 @@ namespace Gestor_Notas.Controllers
             ViewData["IdPeriodicidad"] = new SelectList(_context.Periodicidads, "IdPeriodicidad", "Nombre", curso.IdPeriodicidad);
             ViewData["IdUsuario"] = new SelectList(usuario, "IdUsuario", "Nombre", curso.IdUsuario);
             return View(curso);
+            }
+
+            else
+            {
+                return RedirectToAction("Index", "Error", new { data = "Error de acceso!!", data2 = "Usted no cuenta con los permisos necesario" });
+
+            }
         }
 
         // POST: Cursoes/Edit/5
@@ -124,7 +160,9 @@ namespace Gestor_Notas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("IdCurso,Curso1,IdCarrera,IdUsuario,IdPeriodicidad")] Curso curso)
         {
-            if (id != curso.IdCurso)
+            if ((User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador"))
+            {
+                if (id != curso.IdCurso)
             {
                 return NotFound();
             }
@@ -153,12 +191,20 @@ namespace Gestor_Notas.Controllers
             ViewData["IdPeriodicidad"] = new SelectList(_context.Periodicidads, "IdPeriodicidad", "IdPeriodicidad", curso.IdPeriodicidad);
             ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario", curso.IdUsuario);
             return View(curso);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Error", new { data = "Error de acceso!!", data2 = "Usted no cuenta con los permisos necesario" });
+
+            }
         }
 
         // GET: Cursoes/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
-            if (id == null || _context.Cursos == null)
+            if ((User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador"))
+            {
+                if (id == null || _context.Cursos == null)
             {
                 return NotFound();
             }
@@ -174,6 +220,12 @@ namespace Gestor_Notas.Controllers
             }
 
             return View(curso);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Error", new { data = "Error de acceso!!", data2 = "Usted no cuenta con los permisos necesario" });
+
+            }
         }
 
         // POST: Cursoes/Delete/5
@@ -181,7 +233,9 @@ namespace Gestor_Notas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            try
+            if ((User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador"))
+            {
+                try
             {
                 if (_context.Cursos == null)
                 {
@@ -199,6 +253,12 @@ namespace Gestor_Notas.Controllers
             catch
             {
                 return RedirectToAction("Index", "Error", new { data = "Error al eliminar Curso!!", data2 = "Este campo esta siendo utilizado" });
+
+            }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Error", new { data = "Error de acceso!!", data2 = "Usted no cuenta con los permisos necesario" });
 
             }
         }

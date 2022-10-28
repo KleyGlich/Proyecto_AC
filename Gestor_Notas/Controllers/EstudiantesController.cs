@@ -23,13 +23,27 @@ namespace Gestor_Notas.Controllers
         // GET: Estudiantes
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Estudiantes.ToListAsync());
+            if (User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador")
+            {
+                return View(await _context.Estudiantes.ToListAsync());
+           
+            }else if (User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Catedratico")
+            {
+                return View(await _context.Estudiantes.ToListAsync());
+            }
+            else
+            {
+                return RedirectToAction("Index", "Error", new { data = "Error de acceso!!", data2 = "Usted no cuenta con los permisos necesario" });
+
+            }
         }
 
         // GET: Estudiantes/Details/5
         public async Task<IActionResult> Details(string id)
         {
-            if (id == null || _context.Estudiantes == null)
+            if (User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador")
+            {
+                if (id == null || _context.Estudiantes == null)
             {
                 return NotFound();
             }
@@ -42,14 +56,28 @@ namespace Gestor_Notas.Controllers
             }
 
             return View(estudiante);
+            
+            }
+            else
+            {
+                return RedirectToAction("Index", "Error", new { data = "Error de acceso!!", data2 = "Usted no cuenta con los permisos necesario" });
+
+            }
         }
 
         // GET: Estudiantes/Create
         public IActionResult Create()
         {
-            return View();
-        }
+            if (User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador")
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Error", new { data = "Error de acceso!!", data2 = "Usted no cuenta con los permisos necesario" });
 
+            }
+        }
         // POST: Estudiantes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -72,7 +100,10 @@ namespace Gestor_Notas.Controllers
         // GET: Estudiantes/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
-            if (id == null || _context.Estudiantes == null)
+            if (User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador")
+            {
+
+                if (id == null || _context.Estudiantes == null)
             {
                 return NotFound();
             }
@@ -83,6 +114,12 @@ namespace Gestor_Notas.Controllers
                 return NotFound();
             }
             return View(estudiante);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Error", new { data = "Error de acceso!!", data2 = "Usted no cuenta con los permisos necesario" });
+
+            }
         }
 
         // POST: Estudiantes/Edit/5
@@ -126,7 +163,9 @@ namespace Gestor_Notas.Controllers
         // GET: Estudiantes/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
-            if (id == null || _context.Estudiantes == null)
+            if (User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador")
+            {
+                if (id == null || _context.Estudiantes == null)
             {
                 return NotFound();
             }
@@ -139,6 +178,12 @@ namespace Gestor_Notas.Controllers
             }
 
             return View(estudiante);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Error", new { data = "Error de acceso!!", data2 = "Usted no cuenta con los permisos necesario" });
+
+            }
         }
 
         // POST: Estudiantes/Delete/5

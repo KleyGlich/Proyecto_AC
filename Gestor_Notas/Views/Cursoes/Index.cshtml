@@ -6,13 +6,17 @@
 
 <h1><center>Listado de Cursos</center></h1>
 
-
-<div class="orden">
-    <p>
-        <a asp-action="Create"><img src="~/img/agregar-documento.png" width="50" height="50" /></a>
-        <h3>Crear un Nuevo Curso</h3>
-    </p>
-</div>
+@if (User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador")
+{
+    <div class="orden">
+        <p>
+            <a asp-action="Create"><img src="~/img/agregar-documento.png" width="50" height="50" /></a>
+            <h3>Crear un Nuevo Curso</h3>
+        </p>
+    </div>
+}
+<br />
+<hr />
 <table class="table">
     <thead>
         <tr>
@@ -51,22 +55,32 @@
                 @Html.DisplayFor(modelItem => item.IdUsuarioNavigation.TercerNombre)
                 @Html.DisplayFor(modelItem => item.IdUsuarioNavigation.PrimerApellido)
                 @Html.DisplayFor(modelItem => item.IdUsuarioNavigation.SegundoApellido)
-            </td>           
+            </td>  
+               
                 <td>
                     <center>
+                        @if (User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador")
+                        {
                         <a asp-action="Edit" asp-route-id="@item.IdCurso"><img src="~/img/editar.png" width="40" height="40" /> </a>
+                        }
                     </center>
                 <td>
                     <center>
+                            @if (User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador")
+                            {
                         <a asp-action="Details" asp-route-id="@item.IdCurso"><img src="~/img/votacion.png" width="40" height="40" /> </a>
+                            }
                     </center>
                 </td>
                 <td>
                     <center>
+                            @if (User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador")
+                            {
                         <a asp-action="Delete" asp-route-id="@item.IdCurso"><img src="~/img/basura.png" width="40" height="40" /> </a>
+                            }
                     </center>
                 </td>
         </tr>
-}
+                }
     </tbody>
 </table>

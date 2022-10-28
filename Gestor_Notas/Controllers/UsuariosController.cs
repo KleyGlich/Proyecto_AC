@@ -23,14 +23,26 @@ namespace Gestor_Notas.Controllers
         // GET: Usuarios
         public async Task<IActionResult> Index()
         {
-            var aC_ScoreContext = _context.Usuarios.Include(u => u.IdRolNavigation);
+            if (User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador")
+            {
+                var aC_ScoreContext = _context.Usuarios.Include(u => u.IdRolNavigation);
             return View(await aC_ScoreContext.ToListAsync());
+        }
+            else
+            {
+                return RedirectToAction("Index", "Error", new { data = "Error de acceso!!", data2 = "Usted no cuenta con los permisos necesario" });
+
+            }
+
+
         }
 
         // GET: Usuarios/Details/5
         public async Task<IActionResult> Details(string id)
         {
-            if (id == null || _context.Usuarios == null)
+            if (User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador")
+            {
+                if (id == null || _context.Usuarios == null)
             {
                 return NotFound();
             }
@@ -44,14 +56,25 @@ namespace Gestor_Notas.Controllers
             }
 
             return View(usuario);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Error", new { data = "Error de acceso!!", data2 = "Usted no cuenta con los permisos necesario" });
+
+            }
+
         }
 
         // GET: Usuarios/Create
         public IActionResult Create()
-        {
+      
+            {
             ViewData["IdRol"] = new SelectList(_context.Entidads, "IdRol", "Nombre");
             return View();
-        }
+            }
+          
+
+        
 
         // POST: Usuarios/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -60,7 +83,7 @@ namespace Gestor_Notas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdUsuario,PrimerNombre,SegundoNombre,TercerNombre,PrimerApellido,SegundoApellido,NoIdentificacion,Profesion,Tipo,Usuario1,Contraseña,IdRol")] Usuario usuario)
         {
-            if (ModelState.IsValid)
+                if (ModelState.IsValid)
             {
                 string pass = GetSHA256(usuario.Contraseña).ToUpper();
                 usuario.Contraseña = pass;
@@ -70,12 +93,13 @@ namespace Gestor_Notas.Controllers
             }
             ViewData["IdRol"] = new SelectList(_context.Entidads, "IdRol", "IdRol", usuario.IdRol);
             return View(usuario);
-        }
 
+            }
         // GET: Usuarios/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
-            if (id == null || _context.Usuarios == null)
+
+                if (id == null || _context.Usuarios == null)
             {
                 return NotFound();
             }
@@ -87,6 +111,7 @@ namespace Gestor_Notas.Controllers
             }
             ViewData["IdRol"] = new SelectList(_context.Entidads, "IdRol", "Nombre", usuario.IdRol);
             return View(usuario);
+      
         }
 
         // POST: Usuarios/Edit/5
@@ -96,7 +121,8 @@ namespace Gestor_Notas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("IdUsuario,PrimerNombre,SegundoNombre,TercerNombre,PrimerApellido,SegundoApellido,NoIdentificacion,Profesion,Tipo,Usuario1,Contraseña,IdRol")] Usuario usuario)
         {
-            if (id != usuario.IdUsuario)
+
+                if (id != usuario.IdUsuario)
             {
                 return NotFound();
             }
@@ -125,12 +151,14 @@ namespace Gestor_Notas.Controllers
             }
             ViewData["IdRol"] = new SelectList(_context.Entidads, "IdRol", "IdRol", usuario.IdRol);
             return View(usuario);
+          
         }
 
         // GET: Usuarios/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
-            if (id == null || _context.Usuarios == null)
+
+                if (id == null || _context.Usuarios == null)
             {
                 return NotFound();
             }
@@ -144,6 +172,7 @@ namespace Gestor_Notas.Controllers
             }
 
             return View(usuario);
+       
         }
 
         // POST: Usuarios/Delete/5
@@ -151,7 +180,8 @@ namespace Gestor_Notas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            try
+           
+                try
             {
                 if (_context.Usuarios == null)
                 {
@@ -171,6 +201,7 @@ namespace Gestor_Notas.Controllers
                 return RedirectToAction("Index", "Error", new { data = "Error al eliminar Usuario!!", data2 = "Este campo esta siendo utilizado" });
 
             }
+          
         }
 
         private string GetSHA256(string str)

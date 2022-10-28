@@ -21,13 +21,23 @@ namespace Gestor_Notas.Controllers
         // GET: Periodicidads
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Periodicidads.ToListAsync());
+            if (User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador")
+            {
+                return View(await _context.Periodicidads.ToListAsync());
+            }
+            else
+            {
+                return RedirectToAction("Index", "Error", new { data = "Error de acceso!!", data2 = "Usted no cuenta con los permisos necesario" });
+
+            }
         }
 
         // GET: Periodicidads/Details/5
         public async Task<IActionResult> Details(string id)
         {
-            if (id == null || _context.Periodicidads == null)
+            if (User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador")
+            {
+                if (id == null || _context.Periodicidads == null)
             {
                 return NotFound();
             }
@@ -40,12 +50,27 @@ namespace Gestor_Notas.Controllers
             }
 
             return View(periodicidad);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Error", new { data = "Error de acceso!!", data2 = "Usted no cuenta con los permisos necesario" });
+
+            }
+
         }
 
         // GET: Periodicidads/Create
         public IActionResult Create()
         {
-            return View();
+            if (User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador")
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Error", new { data = "Error de acceso!!", data2 = "Usted no cuenta con los permisos necesario" });
+
+            }
         }
 
         // POST: Periodicidads/Create
@@ -55,19 +80,29 @@ namespace Gestor_Notas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdPeriodicidad,Nombre,Descripcion")] Periodicidad periodicidad)
         {
-            if (ModelState.IsValid)
+            if (User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador")
+            {
+                if (ModelState.IsValid)
             {
                 _context.Add(periodicidad);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(periodicidad);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Error", new { data = "Error de acceso!!", data2 = "Usted no cuenta con los permisos necesario" });
+
+            }
         }
 
         // GET: Periodicidads/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
-            if (id == null || _context.Periodicidads == null)
+            if (User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador")
+            {
+                if (id == null || _context.Periodicidads == null)
             {
                 return NotFound();
             }
@@ -78,6 +113,12 @@ namespace Gestor_Notas.Controllers
                 return NotFound();
             }
             return View(periodicidad);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Error", new { data = "Error de acceso!!", data2 = "Usted no cuenta con los permisos necesario" });
+
+            }
         }
 
         // POST: Periodicidads/Edit/5
@@ -87,7 +128,9 @@ namespace Gestor_Notas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("IdPeriodicidad,Nombre,Descripcion")] Periodicidad periodicidad)
         {
-            if (id != periodicidad.IdPeriodicidad)
+            if (User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador")
+            {
+                if (id != periodicidad.IdPeriodicidad)
             {
                 return NotFound();
             }
@@ -113,12 +156,20 @@ namespace Gestor_Notas.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(periodicidad);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Error", new { data = "Error de acceso!!", data2 = "Usted no cuenta con los permisos necesario" });
+
+            }
         }
 
         // GET: Periodicidads/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
-            if (id == null || _context.Periodicidads == null)
+            if (User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador")
+            {
+                if (id == null || _context.Periodicidads == null)
             {
                 return NotFound();
             }
@@ -131,6 +182,12 @@ namespace Gestor_Notas.Controllers
             }
 
             return View(periodicidad);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Error", new { data = "Error de acceso!!", data2 = "Usted no cuenta con los permisos necesario" });
+
+            }
         }
 
         // POST: Periodicidads/Delete/5
@@ -138,7 +195,9 @@ namespace Gestor_Notas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            try
+            if (User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador")
+            {
+                try
             {
                 if (_context.Periodicidads == null)
                 {
@@ -156,6 +215,12 @@ namespace Gestor_Notas.Controllers
             catch
             {
                 return RedirectToAction("Index", "Error", new { data = "Error al eliminar Periodicidad!!", data2 = "Este campo esta siendo utilizado" });
+
+            }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Error", new { data = "Error de acceso!!", data2 = "Usted no cuenta con los permisos necesario" });
 
             }
         }

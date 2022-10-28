@@ -21,14 +21,19 @@ namespace Gestor_Notas.Controllers
         // GET: DetalleCursoes
         public async Task<IActionResult> Index()
         {
-            var aC_ScoreContext = _context.DetalleCursos.Include(d => d.EstudianteNavigation).Include(d => d.IdCursoNavigation);
+           
+                var aC_ScoreContext = _context.DetalleCursos.Include(d => d.EstudianteNavigation).Include(d => d.IdCursoNavigation);
             return View(await aC_ScoreContext.ToListAsync());
+            
+
         }
 
         // GET: DetalleCursoes/Details/5
         public async Task<IActionResult> Details(string id)
         {
-            if (id == null || _context.DetalleCursos == null)
+            if ((User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador"))
+            {
+                if (id == null || _context.DetalleCursos == null)
             {
                 return NotFound();
             }
@@ -43,16 +48,38 @@ namespace Gestor_Notas.Controllers
             }
 
             return View(detalleCurso);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Error", new { data = "Error de acceso!!", data2 = "Usted no cuenta con los permisos necesario" });
+
+            }
         }
 
         // GET: DetalleCursoes/Create
         public IActionResult Create()
         {
-            var usuario = _context.Usuarios.Select(a => new { IdUsuario = a.IdUsuario, Nombre = a.PrimerNombre + " " + a.SegundoNombre + " " + a.TercerNombre + " " + a.PrimerApellido + " " + a.SegundoApellido });
+            if ((User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador"))
+            {
+                var usuario = _context.Usuarios.Select(a => new { IdUsuario = a.IdUsuario, Nombre = a.PrimerNombre + " " + a.SegundoNombre + " " + a.TercerNombre + " " + a.PrimerApellido + " " + a.SegundoApellido });
 
-            ViewData["Estudiante"] = new SelectList(usuario, "IdUsuario", "Nombre");
-            ViewData["IdCurso"] = new SelectList(_context.Cursos, "IdCurso", "Curso1");
-            return View();
+                ViewData["Estudiante"] = new SelectList(usuario, "IdUsuario", "Nombre");
+                ViewData["IdCurso"] = new SelectList(_context.Cursos, "IdCurso", "Curso1");
+                return View();
+            }
+            else if ((User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Catedratico"))
+            {
+                var usuario = _context.Usuarios.Select(a => new { IdUsuario = a.IdUsuario, Nombre = a.PrimerNombre + " " + a.SegundoNombre + " " + a.TercerNombre + " " + a.PrimerApellido + " " + a.SegundoApellido });
+
+                ViewData["Estudiante"] = new SelectList(usuario, "IdUsuario", "Nombre");
+                ViewData["IdCurso"] = new SelectList(_context.Cursos, "IdCurso", "Curso1");
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Error", new { data = "Error de acceso!!", data2 = "Usted no cuenta con los permisos necesario" });
+
+            }
         }
 
         // POST: DetalleCursoes/Create

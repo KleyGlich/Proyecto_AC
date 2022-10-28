@@ -21,12 +21,26 @@ namespace Gestor_Notas.Controllers
         // GET: EstudianteCarreras
         public async Task<IActionResult> Index()
         {
-            var aC_ScoreContext = _context.EstudianteCarreras.Include(e => e.EstudianteNavigation).Include(e => e.IdCarreraNavigation);
-            return View(await aC_ScoreContext.ToListAsync());
-        }
+            if (User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador")
+            {
+                var aC_ScoreContext = _context.EstudianteCarreras.Include(e => e.EstudianteNavigation).Include(e => e.IdCarreraNavigation);
+                return View(await aC_ScoreContext.ToListAsync());
+            }
+            else if (User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Catedratico")
+            {
+                var aC_ScoreContext = _context.EstudianteCarreras.Include(e => e.EstudianteNavigation).Include(e => e.IdCarreraNavigation);
+                return View(await aC_ScoreContext.ToListAsync());
+            }
+            else{
+                return RedirectToAction("Index", "Error", new { data = "Error de acceso!!", data2 = "Usted no cuenta con los permisos necesario" });
 
-        // GET: EstudianteCarreras/Details/5
-        public async Task<IActionResult> Details(string id)
+            }
+
+
+            }
+
+            // GET: EstudianteCarreras/Details/5
+            public async Task<IActionResult> Details(string id)
         {
             if (id == null || _context.EstudianteCarreras == null)
             {

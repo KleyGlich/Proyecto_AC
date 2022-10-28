@@ -48,7 +48,7 @@ namespace Gestor_Notas.Controllers
         // GET: DetalleCursoes/Create
         public IActionResult Create()
         {
-            var usuario = _context.Usuarios.Select(a => new { IdUsuario = a.IdUsuario, Nombre = a.PrimerNombre + " " + a.SegundoNombre + " " + a.TercerNombre + " " + a.PrimerApellido + " " + a.SegundoApellido });
+            var usuario = _context.Estudiantes.Select(a => new { IdUsuario = a.IdUsuario, Nombre = a.PrimerNombre + " " + a.SegundoNombre + " " + a.TercerNombre + " " + a.PrimerApellido + " " + a.SegundoApellido });
 
             ViewData["Estudiante"] = new SelectList(usuario, "IdUsuario", "Nombre");
             ViewData["IdCurso"] = new SelectList(_context.Cursos, "IdCurso", "Curso1");
@@ -62,15 +62,16 @@ namespace Gestor_Notas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdDetalleCurso,IdCurso,Estudiante,PrimerParcial,SegundoParcial,Actividades,ProyectoFinal,Extraordinario,Estado,FechaIngresoNota,FechaFinalizacion,NumeroActa,Año")] DetalleCurso detalleCurso)
         {
-            if (ModelState.IsValid)
-            {
+           
+            //if (ModelState.IsValid)
+            //{
                 _context.Add(detalleCurso);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
-
-            ViewData["Estudiante"] = new SelectList(_context.Estudiantes, "IdUsuario", "IdUsuario", detalleCurso.Estudiante);
-            ViewData["IdCurso"] = new SelectList(_context.Cursos, "IdCurso", "IdCurso", detalleCurso.IdCurso);
+            //}
+            var usuario = _context.Estudiantes.Select(a => new { IdUsuario = a.IdUsuario, Nombre = a.PrimerNombre + " " + a.SegundoNombre + " " + a.TercerNombre + " " + a.PrimerApellido + " " + a.SegundoApellido });
+            ViewData["Estudiante"] = new SelectList(usuario, "IdUsuario", "Nombre", detalleCurso.Estudiante);
+            ViewData["IdCurso"] = new SelectList(_context.Cursos, "IdCurso", "Curso1", detalleCurso.IdCurso);
             return View(detalleCurso);
         }
 

@@ -93,7 +93,11 @@
                 @Html.DisplayFor(modelItem => item.Año)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EstudianteNavigation.IdUsuario)
+                @Html.DisplayFor(modelItem => item.EstudianteNavigation.PrimerNombre)
+                @Html.DisplayFor(modelItem => item.EstudianteNavigation.SegundoNombre)
+                @Html.DisplayFor(modelItem => item.EstudianteNavigation.TercerNombre)
+                @Html.DisplayFor(modelItem => item.EstudianteNavigation.PrimerApellido)
+                @Html.DisplayFor(modelItem => item.EstudianteNavigation.SegundoApellido)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IdCursoNavigation.Curso1)

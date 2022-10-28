@@ -1,0 +1,248 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Gestor_Notas
+build_property.RootNamespace = Gestor_Notas
+build_property.ProjectDir = C:\Users\Kleyber\Desktop\Proyecto AC\Proyecto_AC\Gestor_Notas\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Kleyber\Desktop\Proyecto AC\Proyecto_AC\Gestor_Notas
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Carreras/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FycmVyYXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Carreras/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FycmVyYXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Carreras/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FycmVyYXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Carreras/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FycmVyYXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Carreras/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FycmVyYXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Cursoes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3Vyc29lc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Cursoes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3Vyc29lc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Cursoes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3Vyc29lc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Cursoes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3Vyc29lc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Cursoes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3Vyc29lc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/DetalleCursoes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV0YWxsZUN1cnNvZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/DetalleCursoes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV0YWxsZUN1cnNvZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/DetalleCursoes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV0YWxsZUN1cnNvZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/DetalleCursoes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV0YWxsZUN1cnNvZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/DetalleCursoes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV0YWxsZUN1cnNvZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Entidads/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW50aWRhZHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Entidads/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW50aWRhZHNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Entidads/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW50aWRhZHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Entidads/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW50aWRhZHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Entidads/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW50aWRhZHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Error/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3JcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/EstudianteCarreras/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0dWRpYW50ZUNhcnJlcmFzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/EstudianteCarreras/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0dWRpYW50ZUNhcnJlcmFzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/EstudianteCarreras/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0dWRpYW50ZUNhcnJlcmFzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/EstudianteCarreras/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0dWRpYW50ZUNhcnJlcmFzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/EstudianteCarreras/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0dWRpYW50ZUNhcnJlcmFzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Estudiantes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0dWRpYW50ZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Estudiantes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0dWRpYW50ZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Estudiantes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0dWRpYW50ZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Estudiantes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0dWRpYW50ZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Estudiantes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0dWRpYW50ZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Home/Contactenos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250YWN0ZW5vcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Periodicidads/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyaW9kaWNpZGFkc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Periodicidads/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyaW9kaWNpZGFkc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Periodicidads/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyaW9kaWNpZGFkc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Periodicidads/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyaW9kaWNpZGFkc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Periodicidads/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyaW9kaWNpZGFkc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Sedes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VkZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Sedes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VkZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Sedes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VkZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Sedes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VkZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Sedes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VkZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Shared/_Layoutlog.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRsb2cuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Shared/_Lerror.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MZXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Usuarios/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Usuarios/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Usuarios/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Usuarios/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Usuarios/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kleyber/Desktop/Proyecto AC/Proyecto_AC/Gestor_Notas/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-2xaapg9f3t

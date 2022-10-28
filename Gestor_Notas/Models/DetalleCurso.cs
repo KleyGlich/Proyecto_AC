@@ -28,7 +28,7 @@ namespace Gestor_Notas.Models
         [Required(ErrorMessage = "Este campo debe ser llenado")]
         public int? Extraordinario { get; set; }
         [Display(Name = " Estado:")]
-        public bool? Estado { get; set; }
+        public bool Estado { get; set; }
         [Display(Name = "Fecha de Ingreso de Notas:")]
         [DataType(DataType.Date)]
         public DateTime? FechaIngresoNota { get; set; }

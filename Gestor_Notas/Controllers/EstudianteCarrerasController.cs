@@ -48,7 +48,8 @@ namespace Gestor_Notas.Controllers
         // GET: EstudianteCarreras/Create
         public IActionResult Create()
         {
-            ViewData["Estudiante"] = new SelectList(_context.Estudiantes, "IdUsuario", "PrimerNombre");
+            var users = _context.Estudiantes.Select(a => new { IdUsuario = a.IdUsuario, Nombre = a.PrimerNombre + " " + a.SegundoNombre + " " + a.TercerNombre + " " + a.PrimerApellido + " " + a.SegundoApellido });
+            ViewData["Estudiante"] = new SelectList(users, "IdUsuario", "Nombre");
             ViewData["IdCarrera"] = new SelectList(_context.Carreras, "IdCarrera", "Carrera1");
             return View();
         }
@@ -66,8 +67,8 @@ namespace Gestor_Notas.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Estudiante"] = new SelectList(_context.Estudiantes, "IdUsuario", "IdUsuario", estudianteCarrera.Estudiante);
-            ViewData["IdCarrera"] = new SelectList(_context.Carreras, "IdCarrera", "IdCarrera", estudianteCarrera.IdCarrera);
+            ViewData["Estudiante"] = new SelectList(_context.Estudiantes, "IdUsuario", "PrimerNombre", estudianteCarrera.Estudiante);
+            ViewData["IdCarrera"] = new SelectList(_context.Carreras, "IdCarrera", "Carrera1", estudianteCarrera.IdCarrera);
             return View(estudianteCarrera);
         }
 
@@ -84,8 +85,9 @@ namespace Gestor_Notas.Controllers
             {
                 return NotFound();
             }
-            ViewData["Estudiante"] = new SelectList(_context.Estudiantes, "IdUsuario", "IdUsuario", estudianteCarrera.Estudiante);
-            ViewData["IdCarrera"] = new SelectList(_context.Carreras, "IdCarrera", "IdCarrera", estudianteCarrera.IdCarrera);
+            var users = _context.Estudiantes.Select(a => new { IdUsuario = a.IdUsuario, Nombre = a.PrimerNombre + " " + a.SegundoNombre + " " + a.TercerNombre + " " + a.PrimerApellido + " " + a.SegundoApellido });
+            ViewData["Estudiante"] = new SelectList(users, "IdUsuario", "Nombre", estudianteCarrera.Estudiante);
+            ViewData["IdCarrera"] = new SelectList(_context.Carreras, "IdCarrera", "Carrera1", estudianteCarrera.IdCarrera);
             return View(estudianteCarrera);
         }
 
@@ -121,8 +123,8 @@ namespace Gestor_Notas.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Estudiante"] = new SelectList(_context.Estudiantes, "IdUsuario", "IdUsuario", estudianteCarrera.Estudiante);
-            ViewData["IdCarrera"] = new SelectList(_context.Carreras, "IdCarrera", "IdCarrera", estudianteCarrera.IdCarrera);
+            ViewData["Estudiante"] = new SelectList(_context.Estudiantes, "IdUsuario", "PrimerNombre", estudianteCarrera.Estudiante);
+            ViewData["IdCarrera"] = new SelectList(_context.Carreras, "IdCarrera", "Carrera1", estudianteCarrera.IdCarrera);
             return View(estudianteCarrera);
         }
 

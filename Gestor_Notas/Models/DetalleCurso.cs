@@ -9,9 +9,9 @@ namespace Gestor_Notas.Models
     {
         public string? IdDetalleCurso { get; set; } = null!;
         [Display(Name = "Curso:")]
-        public string IdCurso { get; set; } = null!;
+        public string? IdCurso { get; set; } = null!;
         [Display(Name = "Estudiante:")]
-        public string Estudiante { get; set; } = null!;
+        public string? Estudiante { get; set; } = null!;
         [Display(Name = "Primer Parcial:")]
         [Required(ErrorMessage = "Este campo debe ser llenado")]
         public int? PrimerParcial { get; set; }
@@ -28,7 +28,7 @@ namespace Gestor_Notas.Models
         [Required(ErrorMessage = "Este campo debe ser llenado")]
         public int? Extraordinario { get; set; }
         [Display(Name = " Estado:")]
-        public bool? Estado { get; set; }
+        public bool Estado { get; set; }
         [Display(Name = "Fecha de Ingreso de Notas:")]
         [DataType(DataType.Date)]
         public DateTime? FechaIngresoNota { get; set; }

@@ -25,9 +25,16 @@ namespace Gestor_Notas.Controllers
         {
 
             if (User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador")
+            {
+                return View(await _context.Sedes.ToListAsync());
+            }  
+
+
+            if (User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador")
             { 
                 return View(await _context.Sedes.ToListAsync());
             }
+
             else
             {
                 return RedirectToAction("Index", "Error", new { data = "Error de acceso!!", data2 = "Usted no cuenta con los permisos necesario" });

@@ -18,8 +18,7 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="IdDetalleCurso" />
-            <input type="hidden" asp-for="IdCurso" />
-            <input type="hidden" asp-for="Estudiante" />
+           
             <div class="form-group col-md-3">
                 <label asp-for="IdCurso" class="control-label"></label>
                 <select asp-for="IdCurso" class="form-control" asp-items="ViewBag.IdCurso"></select>
@@ -53,11 +52,7 @@
                 <input asp-for="Extraordinario" class="form-control" />
                 <span asp-validation-for="Extraordinario" class="text-danger"></span>
             </div>
-            <div class="form-group col-md-3">
-                <label asp-for="Estado" class="control-label"></label>
-                <input asp-for="Estado" class="form-control" />
-                <span asp-validation-for="Estado" class="text-danger"></span>
-            </div>
+           
             <div class="form-group col-md-3">
                 <label asp-for="FechaIngresoNota" class="control-label"></label>
                 <input asp-for="FechaIngresoNota" class="form-control" />
@@ -77,7 +72,16 @@
                 <label asp-for="Año" class="control-label"></label>
                 <input asp-for="Año" class="form-control" type="number" />
                 <span asp-validation-for="Año" class="text-danger"></span>
-            </div><br>
+            </div>
+             <div class="form-group col-md-3">
+                <div class="form-group form-check ">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" asp-for="Estado" /> @Html.DisplayNameFor(model => model.Estado)
+                    </label>
+                </div>
+            </div>
+            <br>
+
             <div class="form-group">
                 <input type="submit" value="Guardar" class="btn btn-primary" />
             </div>

@@ -111,14 +111,16 @@ namespace Gestor_Notas.Controllers
             {
                 return NotFound();
             }
-
-            var detalleCurso = await _context.DetalleCursos.FindAsync(id);
+           
+            var detalleCurso = _context.DetalleCursos.Where(x => x.IdDetalleCurso == id).ToList().First();
             if (detalleCurso == null)
             {
                 return NotFound();
             }
-            ViewData["Estudiante"] = new SelectList(_context.Estudiantes, "IdUsuario", "IdUsuario", detalleCurso.Estudiante);
-            ViewData["IdCurso"] = new SelectList(_context.Cursos, "IdCurso", "IdCurso", detalleCurso.IdCurso);
+            var usuario = _context.Estudiantes.Select(a => new { IdUsuario = a.IdUsuario, Nombre = a.PrimerNombre + " " + a.SegundoNombre + " " + a.TercerNombre + " " + a.PrimerApellido + " " + a.SegundoApellido });
+
+            ViewData["Estudiante"] = new SelectList(usuario, "IdUsuario", "Nombre", detalleCurso.Estudiante);
+            ViewData["IdCurso"] = new SelectList(_context.Cursos, "IdCurso", "Curso1", detalleCurso.IdCurso);
             return View(detalleCurso);
         }
 
@@ -134,8 +136,8 @@ namespace Gestor_Notas.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
+           
+            
                 try
                 {
                     _context.Update(detalleCurso);
@@ -153,7 +155,7 @@ namespace Gestor_Notas.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
-            }
+            
             ViewData["Estudiante"] = new SelectList(_context.Estudiantes, "IdUsuario", "IdUsuario", detalleCurso.Estudiante);
             ViewData["IdCurso"] = new SelectList(_context.Cursos, "IdCurso", "IdCurso", detalleCurso.IdCurso);
             return View(detalleCurso);
@@ -162,6 +164,7 @@ namespace Gestor_Notas.Controllers
         // GET: DetalleCursoes/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
+            var data = id.Split(",");
             if (id == null || _context.DetalleCursos == null)
             {
                 return NotFound();
@@ -170,7 +173,7 @@ namespace Gestor_Notas.Controllers
             var detalleCurso = await _context.DetalleCursos
                 .Include(d => d.EstudianteNavigation)
                 .Include(d => d.IdCursoNavigation)
-                .FirstOrDefaultAsync(m => m.IdDetalleCurso == id);
+                .FirstOrDefaultAsync(m => m.IdDetalleCurso == data[0]);
             if (detalleCurso == null)
             {
                 return NotFound();
@@ -184,11 +187,13 @@ namespace Gestor_Notas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
+
             if (_context.DetalleCursos == null)
             {
                 return Problem("Entity set 'AC_ScoreContext.DetalleCursos'  is null.");
             }
-            var detalleCurso = await _context.DetalleCursos.FindAsync(id);
+        
+            var detalleCurso = _context.DetalleCursos.Where(x => x.IdDetalleCurso == id).ToList().First();
             if (detalleCurso != null)
             {
                 _context.DetalleCursos.Remove(detalleCurso);

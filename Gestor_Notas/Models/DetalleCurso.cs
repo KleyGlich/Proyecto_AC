@@ -14,18 +14,23 @@ namespace Gestor_Notas.Models
         public string? Estudiante { get; set; } = null!;
         [Display(Name = "Primer Parcial:")]
         [Required(ErrorMessage = "Este campo debe ser llenado")]
+     
         public int? PrimerParcial { get; set; }
         [Display(Name = "Segundo Parcial:")]
         [Required(ErrorMessage = "Este campo debe ser llenado")]
+       
         public int? SegundoParcial { get; set; }
         [Display(Name = "Actividades:")]
         [Required(ErrorMessage = "Este campo debe ser llenado")]
+        
         public int? Actividades { get; set; }
         [Display(Name = "Proyecto Final:")]
         [Required(ErrorMessage = "Este campo debe ser llenado")]
+       
         public int? ProyectoFinal { get; set; }
         [Display(Name = " Extraordinario:")]
         [Required(ErrorMessage = "Este campo debe ser llenado")]
+        
         public int? Extraordinario { get; set; }
         [Display(Name = " Estado:")]
         public bool Estado { get; set; }
@@ -40,6 +45,8 @@ namespace Gestor_Notas.Models
         public int? NumeroActa { get; set; }
         [Display(Name = "Año:")]
         [Required(ErrorMessage = "Este campo debe ser llenado")]
+        [Range(0, 9999.99)]
+
         public string? Año { get; set; }
         [Display(Name = "Estudiante:")]
         public virtual Estudiante EstudianteNavigation { get; set; } = null!;

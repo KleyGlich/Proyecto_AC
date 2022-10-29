@@ -23,28 +23,25 @@ namespace Gestor_Notas.Controllers
         public async Task<IActionResult> Index()
         
         {
-<<<<<<< HEAD
+
             if (User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador")
             {
                 return View(await _context.Sedes.ToListAsync());
             }  
-=======
+
 
             if (User.Claims.ElementAt(1).ToString().Split(':')[1].ToString().Replace(" ", "") == "Administrador")
             { 
                 return View(await _context.Sedes.ToListAsync());
             }
->>>>>>> 0ed81b7b1ed6133dc24cb555d97d86c1c31f0520
+
             else
             {
                 return RedirectToAction("Index", "Error", new { data = "Error de acceso!!", data2 = "Usted no cuenta con los permisos necesario" });
 
             }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 0ed81b7b1ed6133dc24cb555d97d86c1c31f0520
         }
 
         // GET: Sedes/Details/5
